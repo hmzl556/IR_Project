@@ -416,5 +416,9 @@
   "latest_tv_combo_revision": {
     "binary_sha256": "d3fff44aca344b5a86518970ae2e44c402aec2213b21bb14c90fba9cd6d12a5a",
     "note": "Supersedes previous build/source snapshot; details in verification.json tv_combo_revision"
+  },
+  "latest_learn_feedback_wake_revision": {
+    "binary_sha256": "3e0121afab3be7268183c4292c94bf2aed98df579355d8878ef7c120bebc56d2",
+    "note": "Supersedes previous build snapshots; see verification.json learn_feedback_wake_revision for current source state."
   }
 }
