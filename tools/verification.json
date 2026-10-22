@@ -1,0 +1,213 @@
+{
+  "basis": "VCR1.1-main-NEW-zzw latest software deltas merged into IR_Project V1.2 hardware/IR implementation",
+  "changed_baseline_files": [
+    "bleuart\\cat1\\cat1\\OTA\\flash_layout.h",
+    "bleuart\\inc\\app_keyscan.h",
+    "bleuart\\inc\\task_keyscan.h",
+    "bleuart\\IR\\irc.c",
+    "bleuart\\IR\\ir_key_map.c",
+    "bleuart\\IR\\ir_key_map.h",
+    "bleuart\\IR\\ir_learn.c",
+    "bleuart\\IR\\ir_learn.h",
+    "bleuart\\pmu\\src\\pm_state.c",
+    "bleuart\\src\\combo_key.c",
+    "bleuart\\src\\main.c",
+    "bleuart\\src\\task_keyscan.c",
+    "bleuart\\prj\\ble_dtss.uvprojx",
+    "bleuart\\src\\task_ble.c"
+  ],
+  "compared_files": 225,
+  "old_key_mapping_preserved": true,
+  "build": "0 errors, 2 pre-existing rc_key_input.c warnings",
+  "binary_bytes": 182796,
+  "sha256": "952111947ebf62d318b1080a877b3b27557ef2af52346bb7b3c98ec9765b131a",
+  "receiver": "PB5 active-low raw carrier; TIM3_CH2 falling edges, 1MHz timestamp extension; IRQ envelope/histogram only, task classification/retry; no blocking sampling loop",
+  "host_test_groups": 24,
+  "power_positions": {
+    "left": "KEY18 STB power, PB9--PA6",
+    "right": "KEY1 TV power, hold 5s for learning"
+  },
+  "learn_store_version": {
+    "raw_reference_format": 1
+  },
+  "rc6_status": "Enabled: Gehua RC6-6A-32 STB 36kHz, fixed system 0x26, 13 physical commands, pairing 0xAD; NEC TV and learned override retained",
+  "stb_user_switch_combo": "Disabled: volume+ + home; all other combinations retained",
+  "undefined_gehua_commands": "KEY2/3/17 have no default IR; KEY15 voice is BLE-only, not learnable; legacy voice learning ignored",
+  "linker_region_ends": {
+    "ER_IROM1": "0x0102E088",
+    "RW_IRAM0": "0x20003FA8",
+    "RW_IRAM1": "0x2000BAB8",
+    "crash_record_start": "0x2000BBE0",
+    "MCU_STACK": "0x2000C000"
+  },
+  "pairing_order": "Synchronous bonding Flash write and advertisement setup before IR frame start",
+  "new_rc6_files": [
+    "bleuart/IR/ir_rc6.c",
+    "bleuart/IR/ir_rc6.h",
+    "bleuart/IR/ir_rc6_encode.c",
+    "bleuart/IR/ir_rc6_encode.h"
+  ],
+  "hardware_validation": "Not flashed/tested on board for this merge; low-power current, repeated wake, heartbeat/server, BLE/CAT1/OTA integration remain hardware acceptance items",
+  "reference_project": "VCR-新板红外发送与自学习-PB4_PB5 L7, user-confirmed hardware functional baseline; reference sources unchanged",
+  "learnable_keys": [
+    1,
+    2,
+    3,
+    17
+  ],
+  "locked_default_keys": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    18
+  ],
+  "learning_protocols": [
+    "Gehua 8010 RC6 canonical replay/toggle",
+    "NEC full waveform and carrier-specific repeat",
+    "bounded generic raw waveform"
+  ],
+  "raw_banks": {
+    "A": "0x0106B000-0x0106DFFF",
+    "B": "0x0106E000-0x01070FFF",
+    "slot_bytes": 524,
+    "slot_count": 18,
+    "cached_slots": 0,
+    "read_max_bytes": 256,
+    "write_page_bytes": 256,
+    "commit": "CRC before magic; verify committed bank and reload target slot"
+  },
+  "storage_failure_injection_points": 147,
+  "tv_power_behavior": "KEY1 short release sends learned waveform or preserved default NEC; hold 5s enters learning without prior power frame; no repeat",
+  "repeat_behavior": "400ms hold delay in key task; Gehua toggle stable; NEC dedicated repeat at learned carrier; raw full-frame repeat; at least108ms start interval and20ms gap for long frames",
+  "raw_files": [
+    "bleuart/IR/ir_raw.c",
+    "bleuart/IR/ir_raw.h",
+    "bleuart/IR/ir_wave_store.c",
+    "bleuart/IR/ir_wave_store.h",
+    "bleuart/IR/ir_key_policy.h"
+  ],
+  "removed_files": [
+    "bleuart/IR/ir_learn_store.c",
+    "bleuart/IR/ir_learn_store.h",
+    "tools/tests/test_store.c"
+  ],
+  "legacy_nec_storage": "Removed, including old-sector address macros, load/save/clear module, migration and fallback paths",
+  "layout_update": "Waveform banks shifted 8KB earlier; user explicitly chose no migration and relearning after update",
+  "unallocated_flash": {
+    "range": "0x01071000-0x0107FFFF",
+    "bytes": 61440
+  },
+  "original_basis": "20IWDG working tree; subsequently updated by three-way merging VCR1.1-main-NEW-zzw APP changes",
+  "software_version": "02010000",
+  "latest_app_merge": {
+    "source": "用户程序-app1/VCR1.1-main-NEW-zzw",
+    "method": "Three-way comparison against 20IWDG; manual resolution preserves IR/key and V1.2 hardware paths",
+    "candidate_file_count": 31,
+    "included_features": [
+      "heartbeat Tag0A and Tag11 DataID6",
+      "Tag01 ASCII ICCID20 and battery",
+      "CAT1 on-demand power and idle shutdown",
+      "time anchor retention across modem restart",
+      "SILENT state, timer pause/resume and retained BLE stack wake",
+      "latest low-power timeout and BLE parameters"
+    ],
+    "preserved": [
+      "USART1 PA4/PA5 with DMA_CH2",
+      "IR PB4/PB5",
+      "18-key matrix and swapped power roles",
+      "4 learnable keys, voice excluded, 13 fixed Gehua keys",
+      "raw banks 0x0106B000/0x0106E000",
+      "ARMCC5u7 project settings",
+      "C heap8192 and BLE task stack3072"
+    ],
+    "board_adaptations": [
+      "KEYSCAN AF5 retained during standby/sleep",
+      "CAT1 TX PA4 and IR TX PB4 parked independently",
+      "USART1 and IRC reinitialised on wake",
+      "DMA_CH2 flags cleared before sleep",
+      "IR/OTA/CAT1/heartbeat sleep exclusion",
+      "KEY18 connected HID only; ordinary learned keys preserve HID when connected; KEY1 targets TV"
+    ],
+    "merge_fixes": [
+      "URC prefix discrimination preserves long AT replies",
+      "ICCID capture limited to current line",
+      "heartbeat pending retained on queue full",
+      "heartbeat interval changes committed only for valid Tag11 payload",
+      "SILENT timer refreshed by physical key"
+    ],
+    "memory_layout": {
+      "ordinary_RAM_end_limit": "0x2000BBE0",
+      "crash_record": "0x2000BBE0-0x2000BBFF",
+      "main_ISR_stack": "0x2000BC00-0x2000BFFF",
+      "initial_MSP": "0x2000C000",
+      "C_heap_bytes": 8192,
+      "BLE_task_stack_bytes": 3072,
+      "static_max_call_depth_bytes": 1236
+    },
+    "tests": "Current: 11 IR + 12 APP/OTA/AES tests passed; original merge had 17 groups",
+    "hardware_validation": "Not flashed/tested on board for this merge; low-power current, repeated wake, heartbeat/server, BLE/CAT1/OTA integration remain hardware acceptance items"
+  },
+  "runtime_logic_review": {
+    "date": "2026-10-22",
+    "software_version": "02010000",
+    "host_test_groups": 23,
+    "static_analysis_translation_units": 73,
+    "static_analysis_raw_diagnostics": 11,
+    "static_max_call_depth_bytes": 1236,
+    "hardware_tested": false,
+    "confirmation_document": "待确认事项_02010000.md",
+    "separate_bootloader_modified": false,
+    "separate_bootloader_issue": "boot_main.c jumps to potentially partially erased APP1 after copy failure; requires separate recovery fix and on-device update",
+    "manifest": "tools/logic_review.json",
+    "backup": "backups/IR_logic_review_20261022_010759.zip"
+  },
+  "confirmation_followup": {
+    "date": "2026-10-22",
+    "battery_policy": "LTE off returns last valid displayed level; initial 100%; no ADC/modem power-on",
+    "battery_source_sha256": "2f7cc29ce9e9f5daf6e068db510e655308eae62f1cccb9d4c8ddb63bd73af732",
+    "regressions": "11 IR + 12 APP + 1 battery groups passed",
+    "build": "0 errors, 2 pre-existing warnings",
+    "hardware_tested": false
+  },
+  "voice_routing_revision": {
+    "date": "2026-10-22",
+    "backup": "backups/IR_voice_routing_20261022.zip",
+    "source_sha256": {
+      "bleuart/IR/ir_key_policy.h": "143cdbcc478d60594edeaa99b1e6b9d602123a2792ec50531ff71b05e26e970e",
+      "bleuart/IR/ir_key_map.c": "a6b22a202f249c411f3e5698453ee97bfcc428fb2a8d61da0f1769e07eea62a9",
+      "bleuart/IR/ir_key_map.h": "629e421f02fc4b3a079af1599faf20888bd2027199135e0fc5234aa10cd1e885",
+      "bleuart/IR/ir_wave_store.c": "7e22776d34f2a962637319f9242657f8eb0bdcb5f43a7173d6876152ea1b3b74",
+      "bleuart/src/task_keyscan.c": "6b3a667858ae77547f02b7805b731e214282f5b41a332d1d7daae7cd69082036"
+    },
+    "tests": "24 groups passed; 73 C units analyzed; existing 11 raw SDK/FreeRTOS diagnostics",
+    "policy": "KEY15 never learns or sends IR; learned codes only on IR route; KEY1 remains TV-targeted",
+    "hardware_tested": false
+  },
+  "tv_combo_revision": {
+    "date": "2026-10-22",
+    "source_sha256": "e29e773408c0d45de77caf99321c5ce4799f6a8306b67290c74b41e028c51eb1",
+    "backup": "backups/IR_tv_bond_isolation_20261022.zip",
+    "policy": "TV pair IR-only; TV unpair skipped without TV context; no STB bond/advertising/PM mutation; STB pair/unpair unchanged",
+    "host_test_groups": 24,
+    "build": "0 errors, 2 pre-existing warnings",
+    "hardware_tested": false
+  },
+  "temporary_silent_timeout": {
+    "date": "2026-10-22",
+    "milliseconds": 300000,
+    "restore_milliseconds": 60000,
+    "document": "暂时改动文档.md",
+    "source_sha256": "9e9ab28fd75a039fa34d1803a8244c054c13065565e3ecf16511021149a0f3f9",
+    "validation": "12 APP regression groups passed; full build 0 errors, 2 pre-existing warnings; no on-board timing test"
+  }
+}
