@@ -1,7 +1,10 @@
 .\objects\ir_rc6.o: ..\IR\ir_rc6.c
-.\objects\ir_rc6.o: ..\IR\ir_rc6.h
+.\objects\ir_rc6.o: ..\inc\app_heap.h
+.\objects\ir_rc6.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\ir_rc6.o: ..\..\cs\inc\cs_core.h
 .\objects\ir_rc6.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\ir_rc6.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\ir_rc6.o: ..\IR\ir_rc6.h
 .\objects\ir_rc6.o: ..\IR\ir_raw.h
 .\objects\ir_rc6.o: ..\IR\ir_rc6_encode.h
 .\objects\ir_rc6.o: ..\IR\ir_learn.h
@@ -35,4 +38,3 @@
 .\objects\ir_rc6.o: ..\..\cs\inc\gap.h
 .\objects\ir_rc6.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\string.h
 .\objects\ir_rc6.o: ..\..\cs\inc\gatt.h
-.\objects\ir_rc6.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdlib.h

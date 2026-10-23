@@ -1,8 +1,8 @@
 /**
  * @file    combo_key.c
  * @brief   组合键管理器实现
- * @note    TV pairing: volume- + TV; STB pairing: volume- + mute (product alias).
- *          TV user-code switch: volume+ + menu; STB switch disabled. Trigger once until release.
+ * @note    TV pairing: volume- + TV; STB pairing: volume- + left (matrix-safe alias).
+ *          TV user-code switch: volume+ + back; STB switch disabled. Trigger once until release.
  *          Factory reset and learning are mutually exclusive in task_keyscan.
  */
 
@@ -42,6 +42,8 @@ typedef struct {
     combo_action_t action;        /* 触发动作类型                    */
     combo_state_t  state;         /* 当前状态                        */
     uint32_t       state_ts_ms;   /* 进入当前状态的时间戳            */
+    uint32_t       release_ts_ms; /* 首次读到组合键不完整的时刻 */
+    bool           release_pending;
     uint32_t       led_ts_ms;     /* LED 闪烁时间戳                  */
     bool           led_on;        /* LED 当前亮灭                    */
     uint8_t        flash_total;   /* 用户码切换：需闪半周期次数      */
@@ -56,15 +58,18 @@ typedef struct {
 /* 组合键注册表（编译时确定，不动态分配） */
 #define COMBO_IDX_PAIR_TV    0   /* 音量- + 电视     → 配对电视机 */
 #define COMBO_IDX_UNPAIR_TV  1   /* 电视 + 返回      → 解配电视机 */
-#define COMBO_IDX_PAIR_STB   2   /* 音量- + 静音     → 配对机顶盒 */
-#define COMBO_IDX_UNPAIR_STB 3   /* 返回 + 静音      → 解配机顶盒 */
-#define COMBO_IDX_USER_TV    4   /* 音量+ + 菜单     → 切电视机用户码 */
+#define COMBO_IDX_PAIR_STB   2   /* 音量- + 左     → 配对机顶盒 */
+#define COMBO_IDX_UNPAIR_STB 3   /* 返回 + 左      → 解配机顶盒 */
+#define COMBO_IDX_USER_TV    4   /* 音量+ + 返回     → 切电视机用户码 */
 #define COMBO_COUNT          5
 
 /** @brief 用户码切换 LED 慢闪半周期（默认码） */
 #define COMBO_USER_SLOW_FLASH_MS  500U
 /** @brief 用户码切换 LED 快闪半周期（备用码） */
 #define COMBO_USER_FAST_FLASH_MS  200U
+/* Automatic KEYSCAN uses 32ms scan interval plus 10ms debounce.
+ * Do not treat one incomplete snapshot as an actual release. */
+#define COMBO_RELEASE_CONFIRM_MS 100U
 
 static combo_key_def_t g_combos[COMBO_COUNT];
 
@@ -94,6 +99,8 @@ static void combo_register(uint8_t idx, uint8_t key1, uint8_t key2, combo_action
     g_combos[idx].action        = action;
     g_combos[idx].state         = COMBO_IDLE;
     g_combos[idx].state_ts_ms   = 0U;
+    g_combos[idx].release_ts_ms = 0U;
+    g_combos[idx].release_pending = false;
     g_combos[idx].led_ts_ms     = 0U;
     g_combos[idx].led_on        = false;
     g_combos[idx].flash_total   = 0U;
@@ -106,11 +113,11 @@ void combo_key_init(void)
     /* 配对/解配电视机（沿用原按键） */
     combo_register(COMBO_IDX_PAIR_TV,    TASK_KEYSCAN_KEY14, TASK_KEYSCAN_KEY3,  COMBO_ACT_PAIR);
     combo_register(COMBO_IDX_UNPAIR_TV,  TASK_KEYSCAN_KEY3,  TASK_KEYSCAN_KEY9,  COMBO_ACT_UNPAIR);
-    /* 配对/解配机顶盒（产品自定义：用静音键替代直播业务键） */
-    combo_register(COMBO_IDX_PAIR_STB,   TASK_KEYSCAN_KEY14, TASK_KEYSCAN_KEY2,  COMBO_ACT_PAIR);
-    combo_register(COMBO_IDX_UNPAIR_STB, TASK_KEYSCAN_KEY9,  TASK_KEYSCAN_KEY2,  COMBO_ACT_UNPAIR);
+    /* 用户确认：旧静音组合共用PA1，改用矩阵线不重叠的左键。 */
+    combo_register(COMBO_IDX_PAIR_STB,   TASK_KEYSCAN_KEY14, TASK_KEYSCAN_KEY5,  COMBO_ACT_PAIR);
+    combo_register(COMBO_IDX_UNPAIR_STB, TASK_KEYSCAN_KEY9,  TASK_KEYSCAN_KEY5,  COMBO_ACT_UNPAIR);
     /* 用户码切换 */
-    combo_register(COMBO_IDX_USER_TV,    TASK_KEYSCAN_KEY12, TASK_KEYSCAN_KEY10, COMBO_ACT_USER_TV);
+    combo_register(COMBO_IDX_USER_TV,    TASK_KEYSCAN_KEY12, TASK_KEYSCAN_KEY9,  COMBO_ACT_USER_TV);
 }
 
 bool combo_key_is_idle(void)
@@ -227,6 +234,7 @@ void combo_key_process(uint32_t now_ms, const uint32_t hw_snapshot[5])
         case COMBO_IDLE:
             if (combo_both_keys_down(c, hw_snapshot)) {
                 c->state = COMBO_HOLDING;
+                c->release_pending = false;
                 c->state_ts_ms = now_ms;
                 //SETLED2;
                 co_printf("[COMBO] key%d+key%d pressed, hold 3s...\r\n",
@@ -239,11 +247,29 @@ void combo_key_process(uint32_t now_ms, const uint32_t hw_snapshot[5])
         /* ---------------------------------------------------------- */
         case COMBO_HOLDING:
             if (!combo_both_keys_down(c, hw_snapshot)) {
-                /* 提前松开 → 取消 */
-                c->state = COMBO_IDLE;
-                co_printf("[COMBO] key%d+key%d released early, cancel.\r\n",
-                          c->key1, c->key2);
-            } else if ((now_ms - c->state_ts_ms) >= COMBO_KEY_HOLD_MS) {
+                /* Confirm missing keys over several scan intervals. Never
+                 * execute an action while the current snapshot is invalid. */
+                if (!c->release_pending) {
+                    c->release_pending = true;
+                    c->release_ts_ms = now_ms;
+                }
+                if (now_ms - c->release_ts_ms >= COMBO_RELEASE_CONFIRM_MS) {
+                    c->state = COMBO_IDLE;
+                    c->release_pending = false;
+                    co_printf("[COMBO] key%d+key%d cancel raw=%08lX/%08lX\r\n",
+                              c->key1, c->key2,
+                              (unsigned long)hw_snapshot[0], (unsigned long)hw_snapshot[1]);
+                }
+                break;
+            }
+            /* A gap already lasting the release threshold cannot be joined
+             * into the old hold even if this is the first recovered sample. */
+            if (c->release_pending &&
+                now_ms - c->release_ts_ms >= COMBO_RELEASE_CONFIRM_MS) {
+                c->state_ts_ms = now_ms;
+            }
+            c->release_pending = false;
+            if ((now_ms - c->state_ts_ms) >= COMBO_KEY_HOLD_MS) {
                 /* OTA 会话期间保留组合键检测，但不执行配对/解配副作用 */
                 if (udp_ota_session_busy() != 0u) {
                     co_printf("[COMBO] ignored: OTA session busy\r\n");

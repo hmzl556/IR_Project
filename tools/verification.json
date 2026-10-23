@@ -19,10 +19,10 @@
   "compared_files": 225,
   "old_key_mapping_preserved": true,
   "build": "0 errors, 2 pre-existing rc_key_input.c warnings",
-  "binary_bytes": 183020,
-  "sha256": "3e0121afab3be7268183c4292c94bf2aed98df579355d8878ef7c120bebc56d2",
+  "binary_bytes": 184792,
+  "sha256": "25fea64bccd1011f86f65c9357e2f5f138c4eb49de394116a25ad4c77e45dac7",
   "receiver": "PB5 active-low raw carrier; TIM3_CH2 falling edges, 1MHz timestamp extension; IRQ envelope/histogram only, task classification/retry; no blocking sampling loop",
-  "host_test_groups": 24,
+  "host_test_groups": 25,
   "power_positions": {
     "left": "KEY18 STB power, PB9--PA6",
     "right": "KEY1 TV power, hold 5s for learning"
@@ -34,9 +34,9 @@
   "stb_user_switch_combo": "Disabled: volume+ + home; all other combinations retained",
   "undefined_gehua_commands": "KEY2/3/17 have no default IR; KEY15 voice is BLE-only, not learnable; legacy voice learning ignored",
   "linker_region_ends": {
-    "ER_IROM1": "0x0102E168",
-    "RW_IRAM0": "0x20003FA8",
-    "RW_IRAM1": "0x2000BAB8",
+    "ER_IROM1": "0x0102E854",
+    "RW_IRAM0": "0x20003FC0",
+    "RW_IRAM1": "0x2000BAE0",
     "crash_record_start": "0x2000BBE0",
     "MCU_STACK": "0x2000C000"
   },
@@ -228,5 +228,120 @@
     "static_translation_units": 73,
     "build": "0 errors, 2 pre-existing warnings",
     "hardware_tested": false
+  },
+  "combo_release_revision": {
+    "date": "2026-10-22",
+    "source_sha256": "60028268dfa40af699e7ec184731e29546ec8a79350c3ee88820501b0031c3f9",
+    "backup": "backups/IR_combo_release_filter_20261022.zip",
+    "release_confirm_ms": 100,
+    "policy": "Require valid pair at trigger; tolerate short incomplete snapshots; confirmed release cancels; late recovery restarts hold; preserve third-key exclusion",
+    "diagnostic": "Cancellation prints KEYDATA0/1 once; true hardware dropout cause not established",
+    "host_test_groups": 24,
+    "static_translation_units": 73,
+    "build": "0 errors, 2 pre-existing warnings",
+    "hardware_tested": false
+  },
+  "combo_remap_led_revision": {
+    "date": "2026-10-22",
+    "source_sha256": {
+      "bleuart/src/combo_key.c": "bbe92cff334397d3c996586b967426b5e7960068625df06ce8976505165b2a4d",
+      "bleuart/src/task_keyscan.c": "4a52311d2ad567de2bfd4bfc03081eccb54cef4774362cd9339ea059b0648d02",
+      "bleuart/src/ble_adv.c": "5324b1ae1fd787672c1bfd3be8e29aa676fccd77366f83835f69848ed78748d3",
+      "bleuart/inc/task_keyscan.h": "83a69da08c592b9d2f23970c0d05a343e8a3ce0ec3131f84ad70fb6720aa18dc"
+    },
+    "backup": "backups/IR_combo_remap_led_20261022.zip",
+    "stb_pair": [
+      14,
+      5
+    ],
+    "stb_unpair": [
+      9,
+      5
+    ],
+    "tv_user_switch": [
+      12,
+      9
+    ],
+    "retired_combos": [
+      [
+        14,
+        2
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        12,
+        10
+      ]
+    ],
+    "red_cleanup": "clear ordinary/wake red at combo takeover and all-released suppression exit; idle/released-debounce cleanup; preserve special blue/learning indicators",
+    "host_test_groups": 24,
+    "build": "0 errors, 2 pre-existing warnings",
+    "hardware_tested": false
+  },
+  "temporary_connected_timeouts_20261023": {
+    "source_sha256": "dbf689130f6725474bbbb3accaace951dddb6d8a4d033e907586b1fc82cd7f9f",
+    "work_to_standby_ms": 300000,
+    "restore_work_to_standby_ms": 30000,
+    "total_idle_to_sleep_ms": 1800000,
+    "restore_total_idle_to_sleep_ms": 90000,
+    "document": "暂时改动文档.md",
+    "validation": "12 APP regression groups passed; full build 0 errors, 2 pre-existing warnings",
+    "hardware_timing_tested": false
+  },
+  "cloudpolicy_heartbeat_log_20261023": {
+    "format": "CloudPolicy updated: interval=100 count=20 heartbeat=1800s",
+    "meaning": "Effective period after successful Tag11 parsing; 0s disabled; omitted heartbeat field preserves prior period",
+    "backup": "backups/cloudpolicy_heartbeat_log_20261023.zip",
+    "validation": "12 APP regression groups passed; build 0 errors, 2 pre-existing warnings",
+    "source_sha256": {
+      "bleuart/cat1/cat1/heartbeat.h": "1b0049e41c75323a886409e5059e75b41d7192513e012faf1c0604f6f7393371",
+      "bleuart/cat1/cat1/heartbeat.c": "6dd5102feb3429060df9e288cc00d235dc8bda74bd47c4cc48d853f7667c35ae",
+      "bleuart/cat1/cat1/rc_cat1_bridge.c": "3315c3aff56154025b1152fdac981238daa46f4448f04f3a0889b9bbe3c256e1"
+    }
+  },
+  "voice_heap_review_20261023": {
+    "source_sha256": {
+      "bleuart/inc/app_gatt_safe.h": "da7919b6e6f4c1c609017ddb4c1b267abbc3827a70ad5bb233eb908623973033",
+      "bleuart/inc/app_heap.h": "d92d221d7c0f41204a73e74e612ea8da2082f4047458740e33dfcfb2bd5526f6",
+      "bleuart/src/blecomm.c": "68975ccec424d60de57fa24c718a9ceaaf55d38aacf8c546fc2d8001866c5988",
+      "cs/src/ble_dtss.c": "b9afc034a331add6808ff1d78f30f2aad136986725fc63bd1a8c8b48b8e25ba0",
+      "bleuart/src/ble_hid_kbd.c": "8034a1e1b2584ce92c7be5896b5274c4b1497b77287417d60ebd7ac61123392c",
+      "bleuart/src/ble_bas.c": "68fea03a489249e805ef9c23ebc3d79971cd3e40d7ec9158e8bb6f5bcb551339",
+      "bleuart/cat1/cat1/ble_rc_svc.c": "719880ea6a5ad415196cf06fcb5aa6ec7b8fc4bd232e2f385a7e5af5b4d71ea2",
+      "bleuart/src/app_encoder_sbc.c": "3b5836fc12e7a41cd50976ec9968442360870bcd0f9702087949560a59d4386b",
+      "bleuart/src/app_encoder_sbc.h": "806453de9f3875883da0a627625f4dba019b38d9c1c68b54b2be3e6ae2008f8e",
+      "bleuart/src/app_audio_pcm.c": "bedb510db61b156e8db7789eb38d4a957af9fcaadeaf7fac203830993a8afea3",
+      "bleuart/src/task_keyscan.c": "eebe8c1ffc14365ea12b9ffdcb1d19dd5009316e33f5241851bac4d8a9a6fee2",
+      "bleuart/IR/ir_wave_store.c": "8aae4eac2a98244c2ce956487936e73cadb8704b0e92f4d41a9f4461f2a1ef5c",
+      "bleuart/IR/ir_rc6.c": "1c24a2f035368ea7182ddea8fa01d89fb8da4142636923c43659e68b91507b1f",
+      "bleuart/IR/ir_learn.c": "0003f4937b9c611cb8b6d65aa85adbe2274f44a6705e9769811ecf90727597b0",
+      "bleuart/IR/ir_key_map.c": "0045dad8e61236bcdaa10aec1e64550f7613d57311c482945f51a42a04311dd4",
+      "bleuart/cat1/cat1/remote_reports.c": "11256787925ec2c4b066c818978f2fe0625dfb5082807adccfe1cf3d59f66068"
+    },
+    "backup": "backups/voice_heap_review_20261023.zip",
+    "findings": "SDK notification always returns zero; notification and FSM nodes have unchecked allocations; actual original heap exhaustion source not completely determined",
+    "protection": "Preflight direct SDK submission under preserved IRQ mask; serialized app heap; 8ms voice pacing; encoder readiness; proper CCCD disable; per-session diagnostics",
+    "tests": "25 host groups pass; 73 C units analyzed; 0 build errors, 2 pre-existing warnings",
+    "hardware_tested": false,
+    "limits": "Preflight does not protect all subsequent async SDK allocations; sustained overload drops voice frames; no forced peer subscription"
+  },
+  "voice_reconnect_review_20261023": {
+    "source_sha256": {
+      "cs/src/ble_dtss.c": "01dfe3ba1d1e30ec8815c4eb0cf76873fdb420c06b3a1a65043769ed24cbbf32",
+      "cs/inc/ble_dtss.h": "a62f84a9491641672bf28ff1f3cc081eb0f711ec654eb68600300dc8a234e436",
+      "bleuart/src/app_voice_ctrl.c": "f89549578c8e75c1268b666620cd603cae1b631f148d6e601a3ee67d203164e5",
+      "tools/test_voice_transport.py": "9c137929d086bae27fcf526f0df1d2112031568a8f7b23e5c5a22336b28dbad8",
+      "tools/tests/test_voice_control.c": "00370d5553a4ba2b84c1985a2add3e27378dfbb386132cdd33bbbde9b61b1458"
+    },
+    "backup": "backups/voice_reconnect_review_20261023.zip",
+    "checks": "Disconnect clears both voice channels/control cache; queued STOP clears old START; SBC and ADC reinitialize at next Start; chr0 notification and chr2 indication must belong to current peer before capture",
+    "changes": "Gate capture on both current-peer subscriptions, log missing channel once per rejected START, stop capture on cancellation, ignore other-peer subscription callbacks",
+    "tests": "25 host groups pass including real callbacks reconnect/channel order/old-peer events and voice START gating; 73 C units, 11 pre-existing raw static diagnostics; build 0 errors, 2 pre-existing warnings",
+    "binary_sha256": "25fea64bccd1011f86f65c9357e2f5f138c4eb49de394116a25ad4c77e45dac7",
+    "hardware_tested": false,
+    "limits": "No forced subscriptions or fake capability request. Host must restore channels. A rejected key START is not held for later replay; release and press again after ready. Original heap exhaustion root cause remains unresolved."
   }
 }

@@ -1,3 +1,4 @@
+#include "app_heap.h"
 /** @file ir_key_map.c
  * @brief Bounded task-context IR queue: Gehua RC6 STB, NEC TV/learned keys.
  * RC6 repeats resend the SAME frame/toggle. New accepted presses toggle once.
@@ -35,14 +36,14 @@ static bool s_sent;
 static uint32_t s_repeat_interval=108u;
 static bool send_learned(uint8_t key,bool repeat,uint32_t frame)
 {
-    ir_raw_t *w=malloc(sizeof(*w));bool ok=false;uint32_t us=0;unsigned i;
+    ir_raw_t *w=app_heap_alloc(sizeof(*w));bool ok=false;uint32_t us=0;unsigned i;
     if(!w)return false;
     if(ir_wave_store_get(key,w)){
         if(w->kind==IR_GEHUA_KIND)ok=ir_rc6_send(frame);
         else ok=ir_rc6_send_wave(w,repeat);
         for(i=0;i<w->count;++i)us+=w->widths[i];
         s_repeat_interval=(us+999u)/1000u+20u;if(s_repeat_interval<108u)s_repeat_interval=108u;
-    }free(w);return ok;
+    }app_heap_free(w);return ok;
 }
 bool ir_user_switch_stb(void)
 {

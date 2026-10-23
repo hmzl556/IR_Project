@@ -1,3 +1,4 @@
+#include "app_gatt_safe.h"
 #include "ble_bas.h"
 #include "bat_adc.h"
 #include "ble_gap.h"
@@ -98,7 +99,7 @@ static void bas_notify_now(void)
 
 	s_bas_level = bat_get_level_percent();
 	val = s_bas_level;
-	(void)gatts_chr_val_notif(peer, s_bas_level_chr, &val, 1U);
+	(void)app_gatt_notify(peer, s_bas_level_chr, &val, 1U);
 	co_printf("[BAS  ] notify level = %u%%\r\n", (unsigned)val);
 }
 

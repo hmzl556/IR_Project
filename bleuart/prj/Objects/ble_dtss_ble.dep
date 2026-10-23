@@ -172,17 +172,17 @@ I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\inc\userhard.h)(0x6A59AA1D)
-I (..\inc\task_keyscan.h)(0x6AD6D033)
+I (..\inc\task_keyscan.h)(0x6AD9E6C0)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\pmu\inc\pm_sleep.h)(0x6A549D4A)
-F (..\src\task_keyscan.c)(0x6AD9D336)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\task_keyscan.o --omf_browse .\objects\task_keyscan.crf --depend .\objects\task_keyscan.d)
+F (..\src\task_keyscan.c)(0x6ADABE8A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\task_keyscan.o --omf_browse .\objects\task_keyscan.crf --depend .\objects\task_keyscan.d)
 I (..\IR\ir_wave_store.h)(0x6AD88C43)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (..\IR\ir_key_policy.h)(0x6AD9BBEB)
-I (..\inc\task_keyscan.h)(0x6AD6D033)
+I (..\inc\task_keyscan.h)(0x6AD9E6C0)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\inc\app_voice_ctrl.h)(0x6A24EA02)
@@ -228,7 +228,7 @@ I (..\inc\ble_gap.h)(0x6A478CDC)
 I (..\inc\gmem.h)(0x6A478CDC)
 I (..\cat1\cat1\rc_key_input.h)(0x6A671F2A)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (..\inc\combo_key.h)(0x6A478CDC)
 I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)
 I (..\inc\ble_adv.h)(0x6A46106A)
@@ -311,7 +311,7 @@ I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
 I (..\inc\ble_adv.h)(0x6A46106A)
 I (..\inc\ble_gap.h)(0x6A478CDC)
-I (..\inc\task_keyscan.h)(0x6AD6D033)
+I (..\inc\task_keyscan.h)(0x6AD9E6C0)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\inc\app_keyscan.h)(0x6AD9604C)
@@ -330,10 +330,10 @@ I (..\cat1\cat1\rc_protocol.h)(0x6AD8C709)
 I (..\cat1\cat1\cat1_skt_udp.h)(0x6AD8C211)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)
 I (..\IR\ir_wave_store.h)(0x6AD88C43)
-I (..\cat1\cat1\heartbeat.h)(0x6AD8C211)
+I (..\cat1\cat1\heartbeat.h)(0x6ADABACB)
 I (..\inc\ble_bas.h)(0x6A59B6E3)
 I (..\freertos\include\task.h)(0x6A2BEC0E)
 I (..\freertos\include\list.h)(0x6A24E99E)
@@ -357,7 +357,7 @@ I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\freertos\include\queue.h)(0x6A24E99E)
 I (..\freertos\include\task.h)(0x6A2BEC0E)
 I (..\freertos\include\list.h)(0x6A24E99E)
-F (..\src\app_voice_ctrl.c)(0x6AD960C1)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\app_voice_ctrl.o --omf_browse .\objects\app_voice_ctrl.crf --depend .\objects\app_voice_ctrl.d)
+F (..\src\app_voice_ctrl.c)(0x6ADAC49D)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\app_voice_ctrl.o --omf_browse .\objects\app_voice_ctrl.crf --depend .\objects\app_voice_ctrl.d)
 I (..\inc\app_voice_ctrl.h)(0x6A24EA02)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (..\freertos\include\FreeRTOS.h)(0x6A24E99E)
@@ -394,21 +394,27 @@ I (..\..\bsp\driver\inc\wwdg.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
 I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
+I (..\..\cs\inc\ble_dtss.h)(0x6ADAC49D)
+I (D:\MDK5.36\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (..\..\cs\inc\gap.h)(0x6899E092)
+I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
+I (..\..\cs\inc\gatt.h)(0x6724B8B4)
+I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
+I (..\inc\gmem.h)(0x6A478CDC)
+I (..\..\cs\inc\hogp.h)(0x6724B8B4)
+I (..\inc\ble_adv.h)(0x6A46106A)
+I (..\inc\ble_gap.h)(0x6A478CDC)
 I (..\freertos\include\queue.h)(0x6A24E99E)
 I (..\freertos\include\task.h)(0x6A2BEC0E)
 I (..\freertos\include\list.h)(0x6A24E99E)
 I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)
-I (..\inc\ble_gap.h)(0x6A478CDC)
-I (..\..\cs\inc\gap.h)(0x6899E092)
-I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
-I (..\inc\task_keyscan.h)(0x6AD6D033)
+I (..\inc\task_keyscan.h)(0x6AD9E6C0)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
-I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
-F (..\src\app_encoder_sbc.c)(0x6A33A114)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\app_encoder_sbc.o --omf_browse .\objects\app_encoder_sbc.crf --depend .\objects\app_encoder_sbc.d)
-I (..\src\app_encoder_sbc.h)(0x6A059318)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
+F (..\src\app_encoder_sbc.c)(0x6ADABDC0)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\app_encoder_sbc.o --omf_browse .\objects\app_encoder_sbc.crf --depend .\objects\app_encoder_sbc.d)
+I (..\src\app_encoder_sbc.h)(0x6ADABDC0)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (..\inc\sys/types.h)(0x69F30FA4)
 I (D:\MDK5.36\ARM\ARMCC\include\stddef.h)(0x6025237E)
@@ -444,7 +450,7 @@ I (..\src\blecomm.h)(0x6A2BECA8)
 I (..\inc\gmem.h)(0x6A478CDC)
 I (..\..\cs\inc\gap.h)(0x6899E092)
 I (..\..\cs\inc\gatt.h)(0x6724B8B4)
-F (..\src\app_audio_pcm.c)(0x6AD96081)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\app_audio_pcm.o --omf_browse .\objects\app_audio_pcm.crf --depend .\objects\app_audio_pcm.d)
+F (..\src\app_audio_pcm.c)(0x6ADABDC0)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\app_audio_pcm.o --omf_browse .\objects\app_audio_pcm.crf --depend .\objects\app_audio_pcm.d)
 I (..\src\app_audio_pcm.h)(0x6A4DABB8)
 I (..\..\bsp\core\inc\br1601x.h)(0x6724B8FE)
 I (..\..\bsp\core\inc\core_cm0.h)(0x6AD961D1)
@@ -472,11 +478,11 @@ I (..\..\bsp\driver\inc\wwdg.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
 I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
-I (..\src\app_encoder_sbc.h)(0x6A059318)
+I (..\src\app_encoder_sbc.h)(0x6ADABDC0)
 I (..\inc\sys/types.h)(0x69F30FA4)
 I (D:\MDK5.36\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (..\src\blecomm.h)(0x6A2BECA8)
-I (..\..\cs\inc\ble_dtss.h)(0x6A478EEC)
+I (..\..\cs\inc\ble_dtss.h)(0x6ADAC49D)
 I (D:\MDK5.36\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (..\..\cs\inc\gap.h)(0x6899E092)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
@@ -522,7 +528,7 @@ I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\inc\ble_adv.h)(0x6A46106A)
 I (..\inc\ble_gap.h)(0x6A478CDC)
 I (..\..\cs\inc\gap.h)(0x6899E092)
-I (..\..\cs\inc\ble_dtss.h)(0x6A478EEC)
+I (..\..\cs\inc\ble_dtss.h)(0x6ADAC49D)
 I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\inc\gmem.h)(0x6A478CDC)
 I (..\..\cs\inc\hogp.h)(0x6724B8B4)
@@ -548,11 +554,11 @@ I (..\freertos\include\deprecated_definitions.h)(0x6A24E99E)
 I (..\freertos\portable\RVDS\ARM_CM0\portmacro.h)(0x6A24E9A0)
 I (..\freertos\include\mpu_wrappers.h)(0x6A24E99E)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (..\inc\combo_key.h)(0x6A478CDC)
-I (..\cat1\cat1\heartbeat.h)(0x6AD8C211)
+I (..\cat1\cat1\heartbeat.h)(0x6ADABACB)
 I (..\IR\irc.h)(0x6AD22055)
-I (..\inc\task_keyscan.h)(0x6AD6D033)
+I (..\inc\task_keyscan.h)(0x6AD9E6C0)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\freertos\include\task.h)(0x6A2BEC0E)
@@ -593,15 +599,42 @@ I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\inc\gmem.h)(0x6A478CDC)
 I (..\..\cs\inc\br_timer.h)(0x67EDF926)
-F (..\src\blecomm.c)(0x6A2BED0E)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\blecomm.o --omf_browse .\objects\blecomm.crf --depend .\objects\blecomm.d)
-I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
-I (..\inc\gmem.h)(0x6A478CDC)
+F (..\src\blecomm.c)(0x6ADABE12)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\blecomm.o --omf_browse .\objects\blecomm.crf --depend .\objects\blecomm.d)
+I (..\inc\app_gatt_safe.h)(0x6ADABDC0)
+I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\..\cs\inc\gap.h)(0x6899E092)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
-I (..\..\cs\inc\gatt.h)(0x6724B8B4)
+I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
+I (..\..\bsp\core\inc\br1601x.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\core_cm0.h)(0x6AD961D1)
+I (..\..\bsp\core\inc\core_cmInstr.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\core_cmFunc.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\system_br1601x.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\br1601x_conf.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\adc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\crc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\dma.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\exti.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\gpio.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\i2c.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\iwdg.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\pwr.h)(0x6AD8C211)
+I (..\..\bsp\driver\inc\rcc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\rtc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\spi.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\tim.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\usart.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\lpuart.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\wwdg.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
+I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
+I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (..\inc\gmem.h)(0x6A478CDC)
 I (..\..\cs\inc\cs_core.h)(0x6724B8B4)
-F (..\src\ble_adv.c)(0x6AD96420)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_adv.o --omf_browse .\objects\ble_adv.crf --depend .\objects\ble_adv.d)
+I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
+F (..\src\ble_adv.c)(0x6AD9E6AD)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_adv.o --omf_browse .\objects\ble_adv.crf --depend .\objects\ble_adv.d)
 I (D:\MDK5.36\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\..\cs\inc\gap.h)(0x6899E092)
@@ -658,7 +691,7 @@ I (..\freertos\include\portable.h)(0x6A24E99E)
 I (..\freertos\include\deprecated_definitions.h)(0x6A24E99E)
 I (..\freertos\portable\RVDS\ARM_CM0\portmacro.h)(0x6A24E9A0)
 I (..\freertos\include\mpu_wrappers.h)(0x6A24E99E)
-I (..\..\cs\inc\ble_dtss.h)(0x6A478EEC)
+I (..\..\cs\inc\ble_dtss.h)(0x6ADAC49D)
 I (..\..\cs\inc\hogp.h)(0x6724B8B4)
 I (..\inc\userhard.h)(0x6A59AA1D)
 I (..\..\bsp\driver\inc\gpio.h)(0x6724B8FE)
@@ -685,7 +718,7 @@ I (..\..\bsp\driver\inc\wwdg.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
 I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
-I (..\inc\task_keyscan.h)(0x6AD6D033)
+I (..\inc\task_keyscan.h)(0x6AD9E6C0)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\inc\ble_hid_kbd.h)(0x6A322354)
@@ -695,25 +728,17 @@ I (..\cat1\cat1\ble_rc_svc.h)(0x6A59E44C)
 I (..\inc\ble_bas.h)(0x6A59B6E3)
 I (..\cat1\cat1\rc_cat1_bridge.h)(0x6AD8F247)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (..\inc\combo_key.h)(0x6A478CDC)
 I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)
 I (..\cat1\cat1\OTA\flash_layout.h)(0x6AD8A9B5)
-F (..\..\cs\src\ble_dtss.c)(0x6AD9601D)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_dtss.o --omf_browse .\objects\ble_dtss.crf --depend .\objects\ble_dtss.d)
-I (D:\MDK5.36\ARM\ARMCC\include\stdio.h)(0x60252374)
-I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
-I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (..\..\cs\inc\gap.h)(0x6899E092)
-I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
+F (..\..\cs\src\ble_dtss.c)(0x6ADAC4C1)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_dtss.o --omf_browse .\objects\ble_dtss.crf --depend .\objects\ble_dtss.d)
+I (..\inc\app_gatt_safe.h)(0x6ADABDC0)
 I (..\..\cs\inc\gatt.h)(0x6724B8B4)
-I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
-I (..\..\cs\inc\ble_dtss.h)(0x6A478EEC)
-I (..\inc\gmem.h)(0x6A478CDC)
-I (..\..\cs\inc\hogp.h)(0x6724B8B4)
-I (..\inc\ble_adv.h)(0x6A46106A)
-I (..\inc\ble_gap.h)(0x6A478CDC)
-I (..\inc\userhard.h)(0x6A59AA1D)
-I (..\..\bsp\driver\inc\gpio.h)(0x6724B8FE)
+I (..\..\cs\inc\gap.h)(0x6899E092)
+I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
+I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\..\bsp\core\inc\br1601x.h)(0x6724B8FE)
 I (..\..\bsp\core\inc\core_cm0.h)(0x6AD961D1)
 I (..\..\bsp\core\inc\core_cmInstr.h)(0x6724B8FE)
@@ -724,6 +749,7 @@ I (..\..\bsp\driver\inc\adc.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\crc.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\dma.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\exti.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\gpio.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\i2c.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\iwdg.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\pwr.h)(0x6AD8C211)
@@ -737,6 +763,15 @@ I (..\..\bsp\driver\inc\wwdg.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
 I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
+I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (D:\MDK5.36\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
+I (..\..\cs\inc\ble_dtss.h)(0x6ADAC49D)
+I (..\inc\gmem.h)(0x6A478CDC)
+I (..\..\cs\inc\hogp.h)(0x6724B8B4)
+I (..\inc\ble_adv.h)(0x6A46106A)
+I (..\inc\ble_gap.h)(0x6A478CDC)
+I (..\inc\userhard.h)(0x6A59AA1D)
 I (..\inc\app_voice_ctrl.h)(0x6A24EA02)
 I (..\freertos\include\FreeRTOS.h)(0x6A24E99E)
 I (D:\MDK5.36\ARM\ARMCC\include\stddef.h)(0x6025237E)
@@ -746,18 +781,44 @@ I (..\freertos\include\portable.h)(0x6A24E99E)
 I (..\freertos\include\deprecated_definitions.h)(0x6A24E99E)
 I (..\freertos\portable\RVDS\ARM_CM0\portmacro.h)(0x6A24E9A0)
 I (..\freertos\include\mpu_wrappers.h)(0x6A24E99E)
-F (..\src\ble_hid_kbd.c)(0x6A59D4F7)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_hid_kbd.o --omf_browse .\objects\ble_hid_kbd.crf --depend .\objects\ble_hid_kbd.d)
-I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
+F (..\src\ble_hid_kbd.c)(0x6ADABDC0)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_hid_kbd.o --omf_browse .\objects\ble_hid_kbd.crf --depend .\objects\ble_hid_kbd.d)
+I (..\inc\app_gatt_safe.h)(0x6ADABDC0)
+I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\..\cs\inc\gap.h)(0x6899E092)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
-I (..\..\cs\inc\gatt.h)(0x6724B8B4)
+I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
+I (..\..\bsp\core\inc\br1601x.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\core_cm0.h)(0x6AD961D1)
+I (..\..\bsp\core\inc\core_cmInstr.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\core_cmFunc.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\system_br1601x.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\br1601x_conf.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\adc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\crc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\dma.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\exti.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\gpio.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\i2c.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\iwdg.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\pwr.h)(0x6AD8C211)
+I (..\..\bsp\driver\inc\rcc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\rtc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\spi.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\tim.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\usart.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\lpuart.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\wwdg.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
+I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
+I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (..\inc\ble_gap.h)(0x6A478CDC)
 I (..\inc\ble_hid_kbd.h)(0x6A322354)
 I (..\..\cs\inc\hogp.h)(0x6724B8B4)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (..\..\cs\inc\br_timer.h)(0x67EDF926)
 F (..\src\ble_diss.c)(0x6A51ED81)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_diss.o --omf_browse .\objects\ble_diss.crf --depend .\objects\ble_diss.d)
 I (..\..\cs\inc\ble_diss.h)(0x6724B8B4)
@@ -770,15 +831,41 @@ I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
-F (..\src\ble_bas.c)(0x6A59FA37)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_bas.o --omf_browse .\objects\ble_bas.crf --depend .\objects\ble_bas.d)
-I (..\inc\ble_bas.h)(0x6A59B6E3)
-I (..\inc\bat_adc.h)(0x6AD8C211)
-I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
-I (..\inc\ble_gap.h)(0x6A478CDC)
+F (..\src\ble_bas.c)(0x6ADABDC0)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_bas.o --omf_browse .\objects\ble_bas.crf --depend .\objects\ble_bas.d)
+I (..\inc\app_gatt_safe.h)(0x6ADABDC0)
+I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\..\cs\inc\gap.h)(0x6899E092)
+I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
-I (..\..\cs\inc\gatt.h)(0x6724B8B4)
+I (..\..\bsp\core\inc\br1601x.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\core_cm0.h)(0x6AD961D1)
+I (..\..\bsp\core\inc\core_cmInstr.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\core_cmFunc.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\system_br1601x.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\br1601x_conf.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\adc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\crc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\dma.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\exti.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\gpio.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\i2c.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\iwdg.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\pwr.h)(0x6AD8C211)
+I (..\..\bsp\driver\inc\rcc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\rtc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\spi.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\tim.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\usart.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\lpuart.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\wwdg.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
+I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
+I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (..\inc\ble_bas.h)(0x6A59B6E3)
+I (..\inc\bat_adc.h)(0x6AD8C211)
+I (..\inc\ble_gap.h)(0x6A478CDC)
 I (..\inc\gmem.h)(0x6A478CDC)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 F (..\src\bat_adc.c)(0x6AD96FEC)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\bat_adc.o --omf_browse .\objects\bat_adc.crf --depend .\objects\bat_adc.d)
@@ -812,7 +899,7 @@ I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
 I (..\src\app_audio_pcm.h)(0x6A4DABB8)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
-F (..\src\combo_key.c)(0x6AD9BF06)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\combo_key.o --omf_browse .\objects\combo_key.crf --depend .\objects\combo_key.d)
+F (..\src\combo_key.c)(0x6AD9E6AD)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\combo_key.o --omf_browse .\objects\combo_key.crf --depend .\objects\combo_key.d)
 I (..\inc\combo_key.h)(0x6A478CDC)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
@@ -841,7 +928,7 @@ I (..\..\bsp\driver\inc\wwdg.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
 I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
-I (..\inc\task_keyscan.h)(0x6AD6D033)
+I (..\inc\task_keyscan.h)(0x6AD9E6C0)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\inc\ble_gap.h)(0x6A478CDC)
@@ -849,7 +936,7 @@ I (..\..\cs\inc\gap.h)(0x6899E092)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\inc\ble_adv.h)(0x6A46106A)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)
 I (..\inc\userhard.h)(0x6A59AA1D)
@@ -862,15 +949,41 @@ I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\cat1\cat1\tiny-aes/aes.h)(0x6A281922)
 I (D:\MDK5.36\ARM\ARMCC\include\stddef.h)(0x6025237E)
-F (..\cat1\cat1\ble_rc_svc.c)(0x6A59E465)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_rc_svc.o --omf_browse .\objects\ble_rc_svc.crf --depend .\objects\ble_rc_svc.d)
-I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
-I (..\cat1\cat1\ble_rc_svc.h)(0x6A59E44C)
+F (..\cat1\cat1\ble_rc_svc.c)(0x6ADABDC0)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ble_rc_svc.o --omf_browse .\objects\ble_rc_svc.crf --depend .\objects\ble_rc_svc.d)
+I (..\inc\app_gatt_safe.h)(0x6ADABDC0)
+I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\..\cs\inc\gap.h)(0x6899E092)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
+I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
+I (..\..\bsp\core\inc\br1601x.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\core_cm0.h)(0x6AD961D1)
+I (..\..\bsp\core\inc\core_cmInstr.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\core_cmFunc.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\system_br1601x.h)(0x6724B8FE)
+I (..\..\bsp\core\inc\br1601x_conf.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\adc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\crc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\dma.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\exti.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\gpio.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\i2c.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\iwdg.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\pwr.h)(0x6AD8C211)
+I (..\..\bsp\driver\inc\rcc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\rtc.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\spi.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\tim.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\usart.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\lpuart.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\wwdg.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
+I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
+I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
+I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (..\cat1\cat1\ble_rc_svc.h)(0x6A59E44C)
 I (..\cat1\cat1\rc_protocol.h)(0x6AD8C709)
 I (..\inc\ble_gap.h)(0x6A478CDC)
-I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\cat1\cat1\rc_trans_assembly.h)(0x6A3F76FA)
 I (..\cat1\cat1\rc_cat1_bridge.h)(0x6AD8F247)
@@ -920,8 +1033,8 @@ I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\..\cs\inc\br_timer.h)(0x67EDF926)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
-F (..\cat1\cat1\heartbeat.c)(0x6AD961D1)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\heartbeat.o --omf_browse .\objects\heartbeat.crf --depend .\objects\heartbeat.d)
-I (..\cat1\cat1\heartbeat.h)(0x6AD8C211)
+F (..\cat1\cat1\heartbeat.c)(0x6ADABACB)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\heartbeat.o --omf_browse .\objects\heartbeat.crf --depend .\objects\heartbeat.d)
+I (..\cat1\cat1\heartbeat.h)(0x6ADABACB)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (..\inc\gmem.h)(0x6A478CDC)
 I (..\..\cs\inc\gap.h)(0x6899E092)
@@ -961,7 +1074,7 @@ I (..\cat1\cat1\cat1_udp_config.h)(0x6AD96377)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (D:\MDK5.36\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 F (..\cat1\cat1\cat1_usart1.c)(0x6AD21547)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\cat1_usart1.o --omf_browse .\objects\cat1_usart1.crf --depend .\objects\cat1_usart1.d)
 I (..\cat1\cat1\cat1_usart1.h)(0x6AD21547)
 I (..\..\bsp\core\inc\br1601x.h)(0x6724B8FE)
@@ -993,7 +1106,7 @@ I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
 I (..\cat1\cat1\cat1_udp_config.h)(0x6AD96377)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
-F (..\cat1\cat1\rc_cat1_bridge.c)(0x6AD96298)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\rc_cat1_bridge.o --omf_browse .\objects\rc_cat1_bridge.crf --depend .\objects\rc_cat1_bridge.d)
+F (..\cat1\cat1\rc_cat1_bridge.c)(0x6ADABACB)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\rc_cat1_bridge.o --omf_browse .\objects\rc_cat1_bridge.crf --depend .\objects\rc_cat1_bridge.d)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\cat1\cat1\rc_cat1_bridge.h)(0x6AD8F247)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -1030,10 +1143,10 @@ I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\cat1\cat1\cat1_skt_udp.h)(0x6AD8C211)
 I (..\cat1\cat1\remote_reports.h)(0x6AD8F290)
 I (D:\MDK5.36\ARM\ARMCC\include\stddef.h)(0x6025237E)
-I (..\inc\task_keyscan.h)(0x6AD6D033)
+I (..\inc\task_keyscan.h)(0x6AD9E6C0)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
-I (..\cat1\cat1\heartbeat.h)(0x6AD8C211)
+I (..\cat1\cat1\heartbeat.h)(0x6ADABACB)
 I (..\cat1\cat1\rc_key_input.h)(0x6A671F2A)
 I (..\cat1\cat1\ble_rc_svc.h)(0x6A59E44C)
 I (..\cat1\cat1\rc_trans_assembly.h)(0x6A3F76FA)
@@ -1047,7 +1160,7 @@ I (..\freertos\portable\RVDS\ARM_CM0\portmacro.h)(0x6A24E9A0)
 I (..\freertos\include\mpu_wrappers.h)(0x6A24E99E)
 I (..\..\cs\inc\br_timer.h)(0x67EDF926)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (..\freertos\include\task.h)(0x6A2BEC0E)
 I (..\freertos\include\list.h)(0x6A24E99E)
 I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)
@@ -1091,7 +1204,7 @@ I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)
 I (..\inc\gmem.h)(0x6A478CDC)
 I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (..\freertos\include\FreeRTOS.h)(0x6A24E99E)
 I (D:\MDK5.36\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (..\freertos\FreeRTOSConfig.h)(0x6A61D247)
@@ -1102,14 +1215,17 @@ I (..\freertos\portable\RVDS\ARM_CM0\portmacro.h)(0x6A24E9A0)
 I (..\freertos\include\mpu_wrappers.h)(0x6A24E99E)
 I (..\freertos\include\task.h)(0x6A2BEC0E)
 I (..\freertos\include\list.h)(0x6A24E99E)
-F (..\cat1\cat1\remote_reports.c)(0x6AD960C1)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\remote_reports.o --omf_browse .\objects\remote_reports.crf --depend .\objects\remote_reports.d)
+F (..\cat1\cat1\remote_reports.c)(0x6ADABE36)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\remote_reports.o --omf_browse .\objects\remote_reports.crf --depend .\objects\remote_reports.d)
+I (..\inc\app_heap.h)(0x6ADABE36)
+I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (..\..\cs\inc\cs_core.h)(0x6724B8B4)
+I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 I (..\cat1\cat1\remote_reports.h)(0x6AD8F290)
 I (..\cat1\cat1\cat1_udp_config.h)(0x6AD96377)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
-I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (..\cat1\cat1\rc_protocol.h)(0x6AD8C709)
 I (..\..\cs\inc\gap.h)(0x6899E092)
-I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (..\cat1\cat1\aes_transport.h)(0x6A281928)
@@ -1141,7 +1257,7 @@ I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
 I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
 I (..\inc\bat_adc.h)(0x6AD8C211)
-I (..\cat1\cat1\heartbeat.h)(0x6AD8C211)
+I (..\cat1\cat1\heartbeat.h)(0x6ADABACB)
 I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)
 I (..\freertos\include\FreeRTOS.h)(0x6A24E99E)
 I (..\freertos\FreeRTOSConfig.h)(0x6A61D247)
@@ -1152,7 +1268,6 @@ I (..\freertos\portable\RVDS\ARM_CM0\portmacro.h)(0x6A24E9A0)
 I (..\freertos\include\mpu_wrappers.h)(0x6A24E99E)
 I (..\freertos\include\task.h)(0x6A2BEC0E)
 I (..\freertos\include\list.h)(0x6A24E99E)
-I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
 F (..\cat1\cat1\tiny-aes\aes.c)(0x6A538715)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\aes.o --omf_browse .\objects\aes.crf --depend .\objects\aes.d)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\cat1\cat1\tiny-aes\aes.h)(0x6A281922)
@@ -1677,7 +1792,7 @@ F (..\inc\userhard.h)(0x6A59AA1D)()
 F (..\src\blecomm.h)(0x6A2BECA8)()
 F (..\inc\gmem.h)(0x6A478CDC)()
 F (..\pmu\src\pm_standby.c)(0x6AD8C56F)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\pm_standby.o --omf_browse .\objects\pm_standby.crf --depend .\objects\pm_standby.d)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\..\cs\inc\gap.h)(0x6899E092)
@@ -1721,7 +1836,7 @@ F (..\pmu\src\pm_state.c)(0x6AD9601D)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\pmu\inc\pm_standby.h)(0x6A39F55C)
 I (..\pmu\inc\pm_sleep.h)(0x6A549D4A)
@@ -1757,13 +1872,13 @@ I (..\..\bsp\driver\inc\wwdg.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\keyscan.h)(0x69DCAD98)
 I (..\..\bsp\driver\inc\qflash.h)(0x6724B8FE)
 I (..\..\bsp\driver\inc\misc.h)(0x6724B8FE)
-I (..\cat1\cat1\heartbeat.h)(0x6AD8C211)
-I (..\inc\task_keyscan.h)(0x6AD6D033)
+I (..\cat1\cat1\heartbeat.h)(0x6ADABACB)
+I (..\inc\task_keyscan.h)(0x6AD9E6C0)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\inc\ble_adv.h)(0x6A46106A)
 F (..\pmu\src\pm_sleep.c)(0x6AD96081)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\pm_sleep.o --omf_browse .\objects\pm_sleep.crf --depend .\objects\pm_sleep.d)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\pmu\inc\pm_sleep.h)(0x6A549D4A)
@@ -1805,11 +1920,11 @@ I (..\cat1\cat1\cat1_skt_udp.h)(0x6AD8C211)
 I (..\cat1\cat1\cat1_usart1.h)(0x6AD21547)
 I (..\cat1\cat1\cat1_udp_config.h)(0x6AD96377)
 I (..\src\app_audio_pcm.h)(0x6A4DABB8)
-I (..\inc\task_keyscan.h)(0x6AD6D033)
+I (..\inc\task_keyscan.h)(0x6AD9E6C0)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\inc\app_keyscan.h)(0x6AD9604C)
-I (..\cat1\cat1\heartbeat.h)(0x6AD8C211)
+I (..\cat1\cat1\heartbeat.h)(0x6ADABACB)
 I (..\..\cs\inc\br_timer.h)(0x67EDF926)
 F (..\cat1\cat1\OTA\ota_crc.c)(0x6AD8F204)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ota_crc.o --omf_browse .\objects\ota_crc.crf --depend .\objects\ota_crc.d)
 I (D:\MDK5.36\ARM\ARMCC\include\stddef.h)(0x6025237E)
@@ -1949,7 +2064,7 @@ I (..\inc\ble_hid_kbd.h)(0x6A322354)
 I (..\..\cs\inc\hogp.h)(0x6724B8B4)
 I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\pmu\inc\pm_state.h)(0x6AD8C211)
-I (..\pmu\inc\pm_config.h)(0x6AD9CF3D)
+I (..\pmu\inc\pm_config.h)(0x6ADAB7AC)
 I (..\inc\app_voice_ctrl.h)(0x6A24EA02)
 I (..\freertos\include\FreeRTOS.h)(0x6A24E99E)
 I (..\freertos\FreeRTOSConfig.h)(0x6A61D247)
@@ -1962,10 +2077,13 @@ I (..\src\app_audio_pcm.h)(0x6A4DABB8)
 I (..\IR\ir_key_map.h)(0x6AD9BC88)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
-F (..\IR\ir_rc6.c)(0x6AD88B16)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ir_rc6.o --omf_browse .\objects\ir_rc6.crf --depend .\objects\ir_rc6.d)
-I (..\IR\ir_rc6.h)(0x6AD88CC5)
+F (..\IR\ir_rc6.c)(0x6ADABE36)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ir_rc6.o --omf_browse .\objects\ir_rc6.crf --depend .\objects\ir_rc6.d)
+I (..\inc\app_heap.h)(0x6ADABE36)
+I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (..\..\cs\inc\cs_core.h)(0x6724B8B4)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
+I (..\IR\ir_rc6.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\IR\ir_rc6_encode.h)(0x6AD700BF)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
@@ -1998,7 +2116,6 @@ I (..\inc\gmem.h)(0x6A478CDC)
 I (..\..\cs\inc\gap.h)(0x6899E092)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\..\cs\inc\gatt.h)(0x6724B8B4)
-I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
 F (..\IR\ir_rc6_encode.c)(0x6AD700BF)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ir_rc6_encode.o --omf_browse .\objects\ir_rc6_encode.crf --depend .\objects\ir_rc6_encode.d)
 I (..\IR\ir_rc6_encode.h)(0x6AD700BF)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -2007,11 +2124,14 @@ F (..\IR\ir_raw.c)(0x6AD88A2A)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
-F (..\IR\ir_wave_store.c)(0x6AD9BC26)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ir_wave_store.o --omf_browse .\objects\ir_wave_store.crf --depend .\objects\ir_wave_store.d)
-I (..\IR\ir_wave_store.h)(0x6AD88C43)
-I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
-I (..\IR\ir_raw.h)(0x6AD88A2A)
+F (..\IR\ir_wave_store.c)(0x6ADABE36)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ir_wave_store.o --omf_browse .\objects\ir_wave_store.crf --depend .\objects\ir_wave_store.d)
+I (..\inc\app_heap.h)(0x6ADABE36)
+I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (..\..\cs\inc\cs_core.h)(0x6724B8B4)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
+I (..\IR\ir_wave_store.h)(0x6AD88C43)
+I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\IR\ir_key_policy.h)(0x6AD9BBEB)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_key_map.h)(0x6AD9BC88)
@@ -2043,7 +2163,6 @@ I (..\cat1\cat1\OTA\flash_layout.h)(0x6AD8A9B5)
 I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)
 I (..\cat1\cat1\cat1_skt_udp.h)(0x6AD8C211)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
-I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 F (..\IR\irc.c)(0x6AD9D2FE)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\irc.o --omf_browse .\objects\irc.crf --depend .\objects\irc.d)
 I (..\IR\irc.h)(0x6AD22055)
@@ -2079,10 +2198,13 @@ I (..\inc\gmem.h)(0x6A478CDC)
 I (..\..\cs\inc\gap.h)(0x6899E092)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\..\cs\inc\gatt.h)(0x6724B8B4)
-F (..\IR\ir_learn.c)(0x6AD9D336)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ir_learn.o --omf_browse .\objects\ir_learn.crf --depend .\objects\ir_learn.d)
-I (..\IR\ir_learn.h)(0x6AD88CC5)
+F (..\IR\ir_learn.c)(0x6ADABE36)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ir_learn.o --omf_browse .\objects\ir_learn.crf --depend .\objects\ir_learn.d)
+I (..\inc\app_heap.h)(0x6ADABE36)
+I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (..\..\cs\inc\cs_core.h)(0x6724B8B4)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
+I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\IR\ir_key_map.h)(0x6AD9BC88)
 I (..\IR\ir_key_policy.h)(0x6AD9BBEB)
@@ -2117,11 +2239,13 @@ I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)
 I (..\cat1\cat1\cat1_skt_udp.h)(0x6AD8C211)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
+F (..\IR\ir_key_map.c)(0x6ADABE36)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ir_key_map.o --omf_browse .\objects\ir_key_map.crf --depend .\objects\ir_key_map.d)
+I (..\inc\app_heap.h)(0x6ADABE36)
 I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
-F (..\IR\ir_key_map.c)(0x6AD9BBEB)(--c99 -c --cpu Cortex-M0 -D__MICROLIB --li -g -O0 --apcs=interwork --split_sections -I ..\..\bsp\common\inc -I ..\..\bsp\core\inc -I ..\..\bsp\driver\inc -I ..\..\audio\audio_encode -I ..\..\audio\audio_code_sbc -I ..\..\cs\inc -I ..\inc -I ..\src -I ..\prj -I ..\..\audio\audio_code_adpcm -I ..\freertos\include -I ..\freertos -I ..\freertos\portable\RVDS\ARM_CM0 -I ..\cat1 -I ..\cat1 -I ..\cat1\tiny-aes -I ..\pmu\inc -I ..\cat1\OTA -I ..\cat1\cat1 -I ..\cat1\cat1\OTA -I ..\cat1\cat1\tiny-aes -I ..\IR --diag_suppress=188 --diag_suppress=177-ID:\MDK5.36\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="536" -DARMCM0 -DBR1601A01 -DUSB_STDPERIPH_DRIVER-o .\objects\ir_key_map.o --omf_browse .\objects\ir_key_map.crf --depend .\objects\ir_key_map.d)
-I (..\IR\ir_key_map.h)(0x6AD9BC88)
+I (..\..\cs\inc\cs_core.h)(0x6724B8B4)
 I (D:\MDK5.36\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (D:\MDK5.36\ARM\ARMCC\include\stdbool.h)(0x6025237C)
+I (..\IR\ir_key_map.h)(0x6AD9BC88)
 I (..\IR\ir_learn.h)(0x6AD88CC5)
 I (..\IR\ir_raw.h)(0x6AD88A2A)
 I (..\IR\irc.h)(0x6AD22055)
@@ -2132,6 +2256,5 @@ I (..\..\cs\inc\gap.h)(0x6899E092)
 I (D:\MDK5.36\ARM\ARMCC\include\string.h)(0x6025237E)
 I (..\..\cs\inc\gatt.h)(0x6724B8B4)
 I (..\IR\ir_wave_store.h)(0x6AD88C43)
-I (D:\MDK5.36\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (..\..\bsp\common\inc\co_printf.h)(0x6A2CFE8A)
 I (..\cat1\cat1\OTA\udp_ota.h)(0x6A47BA24)

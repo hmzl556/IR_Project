@@ -202,6 +202,7 @@ void Audio_Pcm_Start(void)
 	}
 
 	Encoder_Sbc_Enable();
+    if(!Encoder_Sbc_IsReady()){co_printf("[VOICE] start blocked: encoder unavailable\r\n");return;}
 	Audio_Pcm_CaptureEnable();  // 内含 Audio_Pcm_PlatformInit
 
 	bleResetVoiceSbcSeq();  // 语音包序列号/时间戳从 0 开始

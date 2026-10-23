@@ -633,10 +633,11 @@ static void rc_cat1_poll_downlink(void)
 		taskENTER_CRITICAL();
 		memcpy(s_cloud_policy, policy, 6u);
 		taskEXIT_CRITICAL();
-		co_printf("[RC   ] CloudPolicy updated: interval=%u count=%u\r\n",
+		co_printf("[RC   ] CloudPolicy updated: interval=%u count=%u heartbeat=%us\r\n",
 				  (unsigned)(((uint32_t)policy[0] << 24) | ((uint32_t)policy[1] << 16)
 						   | ((uint32_t)policy[2] << 8) | policy[3]),
-				  (unsigned)(((uint16_t)policy[4] << 8) | policy[5]));
+				  (unsigned)(((uint16_t)policy[4] << 8) | policy[5]),
+                  (unsigned)heartbeat_get_period_s());
 		rc_cat1_cloud_policy_save_to_flash(policy);
 	}
 }

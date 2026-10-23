@@ -1,5 +1,7 @@
 #include "app_voice_ctrl.h"
 #include "app_audio_pcm.h"
+#include "ble_dtss.h"
+#include "co_printf.h"
 #include "queue.h"
 #include "udp_ota.h"
 #include "ble_gap.h"
@@ -51,6 +53,15 @@ void voice_ctrl_process_pending(void)
         if (cmd == VOICE_CMD_START) {
             if (udp_ota_session_busy() || task_keyscan_ir_busy() || ble_gap_get_peer() == NULL)
                 continue;
+            {
+                uint8_t ready = ble_dtss_ready_channels();
+                if (ready != (BLE_DTSS_DATA_READY | BLE_DTSS_CTRL_READY)) {
+                    co_printf("[VOICE] not ready: data=%u ctrl=%u\r\n",
+                              (unsigned)((ready & BLE_DTSS_DATA_READY) != 0U),
+                              (unsigned)((ready & BLE_DTSS_CTRL_READY) != 0U));
+                    continue;
+                }
+            }
             /* 通知PM：语音开始传输，重置空闲计时器/退出待机态 */
             pm_activity_notify(PM_ACTIVITY_VOICE);
             Audio_Pcm_Start();

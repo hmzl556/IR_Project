@@ -1,3 +1,4 @@
+#include "app_heap.h"
 /* Reference-compatible 18-slot format, streamed to keep RAM bounded.
  * Only four policy-approved keys may be read/written. Commit magic last.
  */
@@ -79,13 +80,13 @@ void ir_wave_store_load(void)
         s_bank=B;s_sequence=b.sequence;if(va){other=A;other_seq=a.sequence;}
     }else if(va){s_bank=A;s_sequence=a.sequence;if(vb){other=B;other_seq=b.sequence;}}
     if(s_bank){
-        w=malloc(sizeof(*w));
+        w=app_heap_alloc(sizeof(*w));
         if(w){
             allocated=true;
             if(!load_metadata(s_bank,w)){
                 if(other && load_metadata(other,w)){s_bank=other;s_sequence=other_seq;}
                 else {s_bank=0;s_sequence=0;s_mask=0;s_rc6_mask=0;}
-            }free(w);
+            }app_heap_free(w);
         }
     }
     s_metadata_ready = !s_read_failed && (!s_bank || allocated);
@@ -103,7 +104,7 @@ static bool commit(unsigned key,const ir_raw_t *wave,bool clear)
     header_t h,check;ir_raw_t *w;unsigned k;uint32_t bank,offset,crc=0xffffffffu,mask=0;
     bool ok=false;
     if((!clear && !s_metadata_ready) || udp_ota_session_busy() || ir_learn_is_active() || ir_tx_pending() || cat1_modem_is_busy())return false;
-    w=malloc(sizeof(*w));if(!w)return false;
+    w=app_heap_alloc(sizeof(*w));if(!w)return false;
     bank=s_bank==A?B:A;h.magic=0xffffffffu;h.version=VERSION;h.sequence=s_sequence+1u;
     crc=crc_add(crc,&h.version,8);
     /* First pass computes CRC without retaining 18 waveforms in RAM. */
@@ -130,15 +131,15 @@ static bool commit(unsigned key,const ir_raw_t *wave,bool clear)
     if(clear)s_rc6_mask=0;
     else {s_rc6_mask&=~(1ul<<key);if(wave->kind==IR_GEHUA_KIND){s_rc6_mask|=1ul<<key;s_frames[slot(key)]=wave->frame;}}
     ok=true;
- done:free(w);return ok;
+ done:app_heap_free(w);return ok;
 }
 bool ir_wave_store_save(unsigned key,const ir_raw_t *wave)
 {
     ir_raw_t *old;bool same=false;
     if(!s_metadata_ready || !ir_key_learnable(key) || !wave || !ir_raw_valid(wave) || ir_raw_rc6_damaged(wave))return false;
     if(udp_ota_session_busy() || ir_learn_is_active() || ir_tx_pending() || cat1_modem_is_busy())return false;
-    old=malloc(sizeof(*old));if(!old)return false;
-    if(ir_wave_store_get(key,old))same=!memcmp(old,wave,sizeof(*old));free(old);
+    old=app_heap_alloc(sizeof(*old));if(!old)return false;
+    if(ir_wave_store_get(key,old))same=!memcmp(old,wave,sizeof(*old));app_heap_free(old);
     return same || commit(key,wave,false);
 }
 bool ir_wave_store_clear(void)

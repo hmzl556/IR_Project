@@ -1,3 +1,4 @@
+#include "app_heap.h"
 /**
  * @file remote_reports.c
  * @brief UDP 上报：STB TLV 透传 + RC 本地直报 Tag0x01/0x10。
@@ -297,13 +298,13 @@ static int remote_queue_tag_tlv(uint8_t tag, const uint8_t *value, uint16_t valu
     memcpy(plain + 5u, value, value_len);
     {
         int rc;
-        uint8_t *frame = malloc(CAT1_UDP_MAX_UDP_PDU);
+        uint8_t *frame = app_heap_alloc(CAT1_UDP_MAX_UDP_PDU);
         if (!frame) return REMOTE_QUEUE_ERR;
         rc = remote_frame_build(plain, plain_len, frame, CAT1_UDP_MAX_UDP_PDU, &frame_len);
         is_tag10 = (tag == 0x10u) ? 1u : 0u;
         if (!rc) rc = remote_queue_push(frame, frame_len, 0u, RC_PACK_INDEX_NONE, is_tag10);
         else rc = REMOTE_QUEUE_ERR;
-        free(frame);
+        app_heap_free(frame);
         return rc;
     }
 }
@@ -720,7 +721,7 @@ int remote_queue_tlv_blob(const uint8_t *plain, uint16_t plain_len,
     }
     {
         int rc;
-        uint8_t *frame = malloc(CAT1_UDP_MAX_UDP_PDU);
+        uint8_t *frame = app_heap_alloc(CAT1_UDP_MAX_UDP_PDU);
         if (!frame) return REMOTE_QUEUE_ERR;
         rc = remote_frame_build(plain, plain_len, frame, CAT1_UDP_MAX_UDP_PDU, &frame_len);
         if (!rc) {
@@ -728,7 +729,7 @@ int remote_queue_tlv_blob(const uint8_t *plain, uint16_t plain_len,
                 rc = remote_queue_push_rc_trans(frame, frame_len, rc_trans_pack_index);
             else rc = remote_queue_push(frame, frame_len, 0u, RC_PACK_INDEX_NONE, 0u);
         } else rc = REMOTE_QUEUE_ERR;
-        free(frame);
+        app_heap_free(frame);
         return rc;
     }
 }

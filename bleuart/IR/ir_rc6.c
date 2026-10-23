@@ -1,3 +1,4 @@
+#include "app_heap.h"
 /** @file ir_rc6.c
  * @brief PWM carrier plus interrupt-driven RC6 envelope; no task blocking.
  * Uses the validated diagnostic's 36kHz, 1/3 duty, 444us half-bit waveform.
@@ -53,7 +54,7 @@ bool ir_rc6_is_busy(void)
         ir_rc6_stop();
     }
     /* Heap ownership stays in task context, never free from TIM6 ISR. */
-    if (!s_active && s_wave) { free(s_wave); s_wave=0; }
+    if (!s_active && s_wave) { app_heap_free(s_wave); s_wave=0; }
     return s_active;
 }
 
@@ -147,11 +148,11 @@ bool ir_rc6_send_wave(const ir_raw_t *wave,bool repeat)
 {
     uint32_t duration=0;unsigned i;
     if(ir_rc6_is_busy() || ir_learn_is_active() || irc_is_busy() || !wave || !ir_raw_valid(wave))return false;
-    s_wave=malloc(sizeof(*s_wave));if(!s_wave)return false;*s_wave=*wave;
+    s_wave=app_heap_alloc(sizeof(*s_wave));if(!s_wave)return false;*s_wave=*wave;
     if(repeat && wave->kind==IR_NEC_KIND){s_wave->count=3;s_wave->widths[0]=9000;s_wave->widths[1]=2250;s_wave->widths[2]=562;}
     s_length=s_wave->count;s_carrier_period=s_wave->period_ticks;s_carrier_high=(s_carrier_period+1u)/3u;
     for(i=0;i<s_length;++i)duration+=s_wave->widths[i];
     s_timeout_ms=(duration+999u)/1000u+30u;
     if(start_wave())return true;
-    free(s_wave);s_wave=0;return false;
+    app_heap_free(s_wave);s_wave=0;return false;
 }

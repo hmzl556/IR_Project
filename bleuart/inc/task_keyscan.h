@@ -16,6 +16,7 @@
 #define TASK_KEYSCAN_KEY2            2U
 #define TASK_KEYSCAN_KEY3            3U
 #define TASK_KEYSCAN_KEY4            4U
+#define TASK_KEYSCAN_KEY5            5U  /* Left; matrix-safe combo alias */
 #define TASK_KEYSCAN_KEY6            6U
 #define TASK_KEYSCAN_KEY8            8U
 #define TASK_KEYSCAN_KEY9            9U

@@ -106,4 +106,14 @@ int main(void){unsigned i;
  for(i=0;i<20;i++){task_keyscan_hid_send_press(4);task_keyscan_hid_send_release(0);}
  assert(s_hid_reset_pending);modem_busy=0;while(s_hid_count||s_hid_reset_pending)task_keyscan_hid_flush_deferred();
  assert(hid_order[0]=='R'&&hid_order[1]=='R'&&hid_order[hid_order_len-1]=='R');
+ /* A wake red LED survives outside the normal key state machine unless
+  * combo cancellation/release explicitly clears it. Preserve blue ownership. */
+ combo_idle=false;led1=1;led2=1;key_state=KEY_STATE_IDLE;
+ scan(50000,(1u<<14)|(1u<<5),0);assert(s_ir_suppress_until_release);
+ combo_idle=true;scan(50020,0,0);assert(!led1&&led2==1&&!s_ir_suppress_until_release);
+ led1=1;scan(50030,0,0);assert(!led1&&led2==1);
+ /* The same idle cleanup must not overwrite solid learning indication. */
+ s_ir_learn_mode=IR_LEARN_MODE_WAIT_KEY;s_ir_learn_mode_ts_ms=50040;led1=0;
+ scan(50040,0,0);assert(led1==1);s_ir_learn_mode=IR_LEARN_MODE_OFF;
+ scan(50050,0,0);assert(!led1);
  puts("keys: POWER learning, held-entry suppression, 18 keys, feedback/save failure, OTA cancel, debounce, voice release, reset failure, deferred HID order PASS");return 0;}

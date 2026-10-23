@@ -1,3 +1,4 @@
+#include "app_heap.h"
 /* Hardware capture: IRQ only collects; task validates/saves/retries. */
 #include "ir_learn.h"
 #include "ir_key_map.h"
@@ -35,7 +36,7 @@ static void report_retries(void)
 }
 static void capture_off(void)
 { TIM3->DINTEN=0;NVIC_DisableIRQ(TIM3_IRQn);TIM_Enable(TIM3,DISABLE);s_active=false; }
-void ir_learn_discard(void){if(!s_active){free(s_capture);s_capture=0;}}
+void ir_learn_discard(void){if(!s_active){app_heap_free(s_capture);s_capture=0;}}
 const ir_raw_t *ir_learn_wave(void){return s_capture?&s_capture->wave:0;}
 void ir_learn_init(ir_learn_cb_t cb){s_cb=cb;}
 bool ir_learn_is_active(void){return s_active;}
@@ -59,7 +60,7 @@ static void reset_frame(uint32_t now){ir_capture_init(s_capture,now,1);s_error=0
 bool ir_learn_start(void)
 {
     if(s_active || !ir_key_learnable(s_target) || udp_ota_session_busy() || ir_tx_pending() || cat1_modem_is_busy())return false;
-    ir_learn_discard();s_capture=malloc(sizeof(*s_capture));if(!s_capture)return false;
+    ir_learn_discard();s_capture=app_heap_alloc(sizeof(*s_capture));if(!s_capture)return false;
     configure();s_high=0;TIM_SetCnt(TIM3,0);TIM3->STS=0;
     reset_frame(0);s_retry_count=0;s_overcapture_count=0;s_retry_errors=0;
     s_start_ms=app_now_ms();s_active=true;

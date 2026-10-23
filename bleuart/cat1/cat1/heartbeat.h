@@ -35,6 +35,9 @@ void heartbeat_init(void);
  */
 void heartbeat_set_period_s(uint16_t period_s);
 
+/** Current effective heartbeat interval in seconds; 0 means disabled. */
+uint32_t heartbeat_get_period_s(void);
+
 /** 是否到期 (周期为 0 时永不到期; 32 位回绕安全) */
 uint8_t heartbeat_due(void);
 

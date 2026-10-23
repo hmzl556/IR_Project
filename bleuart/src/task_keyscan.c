@@ -529,7 +529,11 @@ void task_keyscan_process(void)
 	// ====== 组合键互斥调度（学习模式活跃时暂停，避免与选目标键冲突） ======
 	// 工厂复位空闲时，简单组合键（配对/解配）才工作
 	if (factory_rst_state == FACTORY_RST_IDLE && s_ir_learn_mode == IR_LEARN_MODE_OFF) {
-		combo_key_process(now_ms, hw_snapshot);
+        bool combo_was_idle = combo_key_is_idle();
+        combo_key_process(now_ms, hw_snapshot);
+        /* Release the ordinary/wake red LED at combo takeover. Special
+         * indication starts on later iterations, so it is not overwritten. */
+        if (combo_was_idle && !combo_key_is_idle()) CLRLED1;
 	}
 	// 简单组合键空闲时，工厂复位才工作
 	if (combo_key_is_idle() && s_ir_learn_mode == IR_LEARN_MODE_OFF) {
@@ -569,10 +573,12 @@ void task_keyscan_process(void)
     if (s_ir_suppress_until_release) {
         if (hw_snapshot[0] != 0u || hw_snapshot[1] != 0u) return;
         s_ir_suppress_until_release = false;
+        CLRLED1; /* Cancelled/released combos must not leave wake red latched. */
         return;
     }
 	switch (key_state) {
 		case KEY_STATE_IDLE:
+            if (key_id == 0u && hw_snapshot[0] == 0u && hw_snapshot[1] == 0u) CLRLED1;
 			if (key_id != 0) {
 				key_candidate = key_id;
 				key_state_ts_ms = now_ms;
@@ -588,6 +594,7 @@ void task_keyscan_process(void)
 			}
 			if ((now_ms - key_state_ts_ms) >= KEY_DEBOUNCE_MS) {
                 if (!keyscan_is_key_pressed(hw_snapshot, (uint8_t)key_candidate)) {
+                    CLRLED1;
                     key_state = KEY_STATE_IDLE;
                     break;
                 }
@@ -720,7 +727,7 @@ void task_keyscan_process(void)
 						key15_voice_started = true;
 						(void)voice_ctrl_post_start();
 						key15_rc_notify_defer(0x01u);
-						co_printf("Voice capture started by KEY_15 (press)\r\n");
+						co_printf("[VOICE] KEY15 start requested\r\n");
 					}
 				}
 			}
@@ -750,7 +757,7 @@ void task_keyscan_process(void)
 						key15_voice_started = false;
 						(void)voice_ctrl_post_stop();
 						key15_rc_notify_defer(0x00u);
-						co_printf("Voice capture stopped by KEY_15 (release)\r\n\r\n");
+						co_printf("[VOICE] KEY15 stop requested\r\n\r\n");
 					}
 				} else {
 					task_keyscan_rc_notify(0x00u);

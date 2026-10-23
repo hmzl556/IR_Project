@@ -1,7 +1,10 @@
 .\objects\ir_key_map.o: ..\IR\ir_key_map.c
-.\objects\ir_key_map.o: ..\IR\ir_key_map.h
+.\objects\ir_key_map.o: ..\inc\app_heap.h
+.\objects\ir_key_map.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\ir_key_map.o: ..\..\cs\inc\cs_core.h
 .\objects\ir_key_map.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\ir_key_map.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\ir_key_map.o: ..\IR\ir_key_map.h
 .\objects\ir_key_map.o: ..\IR\ir_learn.h
 .\objects\ir_key_map.o: ..\IR\ir_raw.h
 .\objects\ir_key_map.o: ..\IR\irc.h
@@ -12,6 +15,5 @@
 .\objects\ir_key_map.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\string.h
 .\objects\ir_key_map.o: ..\..\cs\inc\gatt.h
 .\objects\ir_key_map.o: ..\IR\ir_wave_store.h
-.\objects\ir_key_map.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\ir_key_map.o: ..\..\bsp\common\inc\co_printf.h
 .\objects\ir_key_map.o: ..\cat1\cat1\OTA\udp_ota.h

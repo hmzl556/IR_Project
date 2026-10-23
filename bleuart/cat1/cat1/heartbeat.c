@@ -72,6 +72,11 @@ void heartbeat_set_period_s(uint16_t period_s)
     co_printf("[HB] period updated: %u s\r\n", (unsigned)period_s);
 }
 
+uint32_t heartbeat_get_period_s(void)
+{
+    return s_period_ms / 1000u;
+}
+
 uint8_t heartbeat_due(void)
 {
     if (s_period_ms == 0u) {

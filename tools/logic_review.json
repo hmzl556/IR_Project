@@ -420,5 +420,21 @@
   "latest_learn_feedback_wake_revision": {
     "binary_sha256": "3e0121afab3be7268183c4292c94bf2aed98df579355d8878ef7c120bebc56d2",
     "note": "Supersedes previous build snapshots; see verification.json learn_feedback_wake_revision for current source state."
+  },
+  "latest_combo_release_revision": {
+    "binary_sha256": "b609ee8dffeecdb689f4dd5a17c3c5690fd7c90cfcdd96c7f07ceae9c1ae4380",
+    "note": "Previous snapshots are historical; latest verification.json combo_release_revision describes this build."
+  },
+  "latest_combo_remap_led_revision": {
+    "binary_sha256": "1ea3d7668d59f77132a8683f644f59f8e61b66cc28760fbe5691dfafd5bccaf7",
+    "note": "Prior snapshots are historical; see verification.json combo_remap_led_revision."
+  },
+  "latest_voice_heap_review_20261023": {
+    "binary_sha256": "4beef43dca5b0bd1d8447aa04fa78e6b401fd98aedfd9d6baedfdf01c1daedd1",
+    "note": "Historical snapshots above are superseded; latest source/build details in verification.json voice_heap_review_20261023."
+  },
+  "latest_voice_reconnect_review_20261023": {
+    "binary_sha256": "25fea64bccd1011f86f65c9357e2f5f138c4eb49de394116a25ad4c77e45dac7",
+    "note": "Supersedes historical build snapshots; see verification.json voice_reconnect_review_20261023. Hardware reconnection still requires validation."
   }
 }

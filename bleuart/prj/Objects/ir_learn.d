@@ -1,7 +1,10 @@
 .\objects\ir_learn.o: ..\IR\ir_learn.c
-.\objects\ir_learn.o: ..\IR\ir_learn.h
+.\objects\ir_learn.o: ..\inc\app_heap.h
+.\objects\ir_learn.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\ir_learn.o: ..\..\cs\inc\cs_core.h
 .\objects\ir_learn.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\ir_learn.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\ir_learn.o: ..\IR\ir_learn.h
 .\objects\ir_learn.o: ..\IR\ir_raw.h
 .\objects\ir_learn.o: ..\IR\ir_key_map.h
 .\objects\ir_learn.o: ..\IR\ir_key_policy.h
@@ -37,4 +40,3 @@
 .\objects\ir_learn.o: ..\cat1\cat1\OTA\udp_ota.h
 .\objects\ir_learn.o: ..\cat1\cat1\cat1_skt_udp.h
 .\objects\ir_learn.o: ..\..\bsp\common\inc\co_printf.h
-.\objects\ir_learn.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\stdlib.h
