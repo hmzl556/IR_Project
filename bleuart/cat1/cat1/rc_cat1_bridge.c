@@ -5,6 +5,7 @@
 #include "cat1_udp_config.h"
 #include "remote_reports.h"
 #include "task_keyscan.h"
+#include "bat_adc.h"
 #include "heartbeat.h"      /* heartbeat_on_udp_ready — UDP 就绪补发心跳 */
 #include "rc_key_input.h"
 #include "ble_rc_svc.h"
@@ -309,6 +310,7 @@ static void rc_cat1_busy_orphan_watch(void)
 
 void rc_cat1_init(void)
 {
+    bat_adc_restart_window();
 	co_printf("[RC   ] CAT1 init start\r\n");
 
 	/*
@@ -1134,6 +1136,7 @@ void rc_cat1_power_down(void)
 
 	/* 4. 硬件断电 */
 	LTE_EN_OFF();
+    bat_adc_restart_window();
 }
 
 /**

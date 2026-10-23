@@ -48,7 +48,7 @@ static void bas_level_cbk(gatt_event_t event, void *context, void *param)
 		gatt_chr_val_read_req_t *in = (gatt_chr_val_read_req_t *)param;
 		uint8_t val;
 
-		s_bas_level = bat_get_level_percent(); /* 即时采样或按规则返回 */
+		s_bas_level = bat_get_level_percent(); /* 读取统一电量缓存，不触碰语音 ADC */
 		val = s_bas_level;
 		gatts_chr_val_read_rsp(in->peer, in->chr, GATT_OK, &val, 1U);
 		co_printf("[BAS  ] level read = %u%%\r\n", (unsigned)val);
@@ -77,7 +77,7 @@ static void bas_level_cbk(gatt_event_t event, void *context, void *param)
 }
 
 /**
- * @brief  立即采样并通过 Notify 上报当前电量
+ * @brief  通过 Notify 上报统一缓存的电量
  */
 static void bas_notify_now(void)
 {

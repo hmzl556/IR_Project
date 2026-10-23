@@ -60,5 +60,6 @@
 .\objects\task_ble.o: ..\IR\ir_wave_store.h
 .\objects\task_ble.o: ..\cat1\cat1\heartbeat.h
 .\objects\task_ble.o: ..\inc\ble_bas.h
+.\objects\task_ble.o: ..\inc\bat_adc.h
 .\objects\task_ble.o: ..\freertos\include\task.h
 .\objects\task_ble.o: ..\freertos\include\list.h

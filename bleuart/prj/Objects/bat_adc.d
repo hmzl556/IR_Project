@@ -31,3 +31,12 @@
 .\objects\bat_adc.o: ..\..\bsp\driver\inc\misc.h
 .\objects\bat_adc.o: ..\src\app_audio_pcm.h
 .\objects\bat_adc.o: ..\..\bsp\common\inc\co_printf.h
+.\objects\bat_adc.o: ..\inc\gmem.h
+.\objects\bat_adc.o: ..\..\cs\inc\gap.h
+.\objects\bat_adc.o: D:\MDK5.36\ARM\ARMCC\Bin\..\include\string.h
+.\objects\bat_adc.o: ..\..\cs\inc\gatt.h
+.\objects\bat_adc.o: ..\cat1\cat1\cat1_skt_udp.h
+.\objects\bat_adc.o: ..\inc\task_keyscan.h
+.\objects\bat_adc.o: ..\IR\ir_learn.h
+.\objects\bat_adc.o: ..\IR\ir_raw.h
+.\objects\bat_adc.o: ..\cat1\cat1\OTA\udp_ota.h

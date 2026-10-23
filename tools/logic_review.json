@@ -436,5 +436,9 @@
   "latest_voice_reconnect_review_20261023": {
     "binary_sha256": "25fea64bccd1011f86f65c9357e2f5f138c4eb49de394116a25ad4c77e45dac7",
     "note": "Supersedes historical build snapshots; see verification.json voice_reconnect_review_20261023. Hardware reconnection still requires validation."
+  },
+  "latest_battery_sampling_revision_20261023": {
+    "binary_sha256": "bd9a886d32a40de05943f1505eb4b0266b91fb3c48387f9db479603a55d70ee4",
+    "note": "Supersedes historical build snapshots. See verification.json battery_sampling_revision_20261023. Firmware 02010000; real voltage calibration and repeated-reset validation remain to be performed."
   }
 }

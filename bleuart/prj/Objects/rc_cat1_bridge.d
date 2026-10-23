@@ -39,6 +39,7 @@
 .\objects\rc_cat1_bridge.o: ..\inc\task_keyscan.h
 .\objects\rc_cat1_bridge.o: ..\IR\ir_learn.h
 .\objects\rc_cat1_bridge.o: ..\IR\ir_raw.h
+.\objects\rc_cat1_bridge.o: ..\inc\bat_adc.h
 .\objects\rc_cat1_bridge.o: ..\cat1\cat1\heartbeat.h
 .\objects\rc_cat1_bridge.o: ..\cat1\cat1\rc_key_input.h
 .\objects\rc_cat1_bridge.o: ..\cat1\cat1\ble_rc_svc.h

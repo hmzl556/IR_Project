@@ -18,6 +18,7 @@
 #include "ir_wave_store.h" /* 学习键值加载（须在 BLE 栈/Qflash 就绪后） */
 #include "heartbeat.h"      /* 服务器心跳 — 工作/待机循环检查 */
 #include "ble_bas.h"
+#include "bat_adc.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "pwr.h"            /* PWR_EnterSTANDBYMode */
@@ -140,6 +141,7 @@ void task_ble_entry(void *pvParameters)
 
 		// 处理 VOICE 相关的事件和状态，确保语音输入能够被及时捕获和处理
 		task_voice_process_once();
+        bat_adc_poll(); /* sample only in safe ADC/modem windows; readers use cache */
 		/* KEY_15 语音 GATT 与 RC-KEY notify 错开，避免同周期多次 FSM_Write */
 		task_keyscan_flush_deferred_voice_rc();
 

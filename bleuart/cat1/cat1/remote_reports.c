@@ -9,7 +9,7 @@
 #include "rc_protocol.h"
 #include "cat1_time_sync.h"
 #include "cat1_skt_udp.h"   /* cat1_iccid_get_raw — 心跳 Tag0x0A SIM 卡号 */
-#include "bat_adc.h"        /* bat_get_level_percent — 心跳电量        */
+#include "bat_adc.h"        /* bat_get_level_percent — 统一电量缓存    */
 #include "heartbeat.h"      /* heartbeat_set_period_s — Tag11 数据ID6  */
 #include "udp_ota.h"
 #include "br1601x.h"

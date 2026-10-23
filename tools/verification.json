@@ -19,8 +19,8 @@
   "compared_files": 225,
   "old_key_mapping_preserved": true,
   "build": "0 errors, 2 pre-existing rc_key_input.c warnings",
-  "binary_bytes": 184792,
-  "sha256": "25fea64bccd1011f86f65c9357e2f5f138c4eb49de394116a25ad4c77e45dac7",
+  "binary_bytes": 185260,
+  "sha256": "bd9a886d32a40de05943f1505eb4b0266b91fb3c48387f9db479603a55d70ee4",
   "receiver": "PB5 active-low raw carrier; TIM3_CH2 falling edges, 1MHz timestamp extension; IRQ envelope/histogram only, task classification/retry; no blocking sampling loop",
   "host_test_groups": 25,
   "power_positions": {
@@ -34,7 +34,7 @@
   "stb_user_switch_combo": "Disabled: volume+ + home; all other combinations retained",
   "undefined_gehua_commands": "KEY2/3/17 have no default IR; KEY15 voice is BLE-only, not learnable; legacy voice learning ignored",
   "linker_region_ends": {
-    "ER_IROM1": "0x0102E854",
+    "ER_IROM1": "0x0102EA2C",
     "RW_IRAM0": "0x20003FC0",
     "RW_IRAM1": "0x2000BAE0",
     "crash_record_start": "0x2000BBE0",
@@ -343,5 +343,25 @@
     "binary_sha256": "25fea64bccd1011f86f65c9357e2f5f138c4eb49de394116a25ad4c77e45dac7",
     "hardware_tested": false,
     "limits": "No forced subscriptions or fake capability request. Host must restore channels. A rejected key START is not held for later replay; release and press again after ready. Original heap exhaustion root cause remains unresolved."
+  },
+  "battery_sampling_revision_20261023": {
+    "source_sha256": {
+      "bleuart/src/bat_adc.c": "f190e74b5ed6152c98b1d2bf2d761ae365227a56792a595057303d8d21a01f37",
+      "bleuart/inc/bat_adc.h": "9b39f0e5fc185cca41f10abfce995e5b1e0aaf456e07159b70dd7a8063fc9f64",
+      "bleuart/src/task_ble.c": "2aac1e645ac1597e8e41ef1eec53367b298d60b649d80479ce195cca34bdb15a",
+      "bleuart/src/ble_bas.c": "27b48cfd279be22330f41899b924db679be5d6abeb0e95f0fc4e6168da01acf1",
+      "bleuart/cat1/cat1/rc_cat1_bridge.c": "a9d369d66cf17de3d520bd0a6a85b775df19d541008c30bf21df6169b07bb465",
+      "bleuart/cat1/cat1/remote_reports.c": "55ef411c757b260b2c9f9c2143172b071cdd98525b74f0fe2fa5a05b0b4af549",
+      "tools/test_battery.py": "b6318335f26634338ea0e5f7435369fe06144e7657bc819d30b7e3bb86c6f29e"
+    },
+    "backup": "backups/battery_sampling_20261023.zip",
+    "policy": "Cache-only readers; BLE main-task sampler, >=60000ms between valid updates, never powers LTE; 200ms LTE settle and 100ms quiet window; voice/IR/AT/OTA defer sampling",
+    "sampling": "All updates use 3 groups separated by >=20ms; each group discards first conversion, trims min/max from 8 valid measurements; publishes median of group voltages; incomplete sets discarded on busy/power reset; failed group retries after >=1s",
+    "filter": "Q8 percent, 1/16 EMA per elapsed minute capped at 64 steps for missed LTE-off time, 2 percentage-point display hysteresis; endpoints can settle to 0/100; original 3300..4200mV linear range/divider and protocol unchanged",
+    "cache": "Initial 100 until first complete valid set; cached level/EMA/rate limit survive modem restart and retained-RAM sleep; MCU reset initializes from new samples",
+    "tests": "25 host regression groups passed; real sampler/filter source exercised for cache reads/rate/settling/trim/median/failures/retry/guards/wake/wrap/slow drift/endpoints; 73 C units static analysis, 11 pre-existing diagnostics; build 0 errors, 2 original warnings",
+    "binary_sha256": "bd9a886d32a40de05943f1505eb4b0266b91fb3c48387f9db479603a55d70ee4",
+    "hardware_tested": false,
+    "limits": "AT idle is only a software proxy for a quieter load, not RF idle detection. First report may still be initial 100 if no safe sample window exists. 60s is a minimum update interval, not a forced wake schedule. Elapsed EMA approximates past minutes with newest sample; battery curve/ADC calibration need board measurements. No guarantee of identical readings on every reset."
   }
 }
