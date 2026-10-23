@@ -132,6 +132,144 @@ static int remote_value_append(uint8_t *buf, uint16_t *len, uint16_t max_len,
     return 0;
 }
 
+/* Wire dates are exactly YYMMDDhhmmss, six BCD bytes (years 2000..2099). */
+static int remote_date6_valid(const uint8_t p[6])
+{
+    uint8_t v[6], i, days;
+    static const uint8_t mdays[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+    for (i = 0U; i < 6U; ++i) {
+        if ((p[i] & 15U) > 9U || (p[i] >> 4) > 9U) return 0;
+        v[i] = (uint8_t)((p[i] >> 4) * 10U + (p[i] & 15U));
+    }
+    if (v[1] < 1U || v[1] > 12U || v[3] > 23U || v[4] > 59U || v[5] > 59U) return 0;
+    days = mdays[v[1] - 1U];
+    if (v[1] == 2U && v[0] % 4U == 0U) ++days;
+    return v[2] >= 1U && v[2] <= days;
+}
+
+static int remote_all_zero(const uint8_t *p, uint8_t n, uint8_t zero)
+{
+    uint8_t i;
+    for (i = 0U; i < n; ++i) if (p[i] != zero) return 0;
+    return 1;
+}
+
+/* 1=present, 0=unconfigured, -1=invalid; reject century truncation. */
+static int remote_ascii_date6(const uint8_t *ascii, uint8_t out[6])
+{
+    if (remote_all_zero(ascii, 14U, '0')) return 0;
+    if (ascii[0] != '2' || ascii[1] != '0' ||
+        rc_ascii_digits_to_bcd(ascii + 2U, 12U, out, 6U) != 0 ||
+        !remote_date6_valid(out)) return -1;
+    return 1;
+}
+
+/* Known STB bug: it packs YYYYMMDDhhmm, dropping seconds. Repair ONLY
+ * when all six received bytes match the same field in authoritative RC-READ.
+ * Seconds come from that full configured date, never from a guessed 00. */
+static int remote_recover_date(uint8_t id, const uint8_t *bad, uint8_t out[6])
+{
+    const uint8_t *read = ble_rc_svc_get_read();
+    const uint8_t *ascii;
+    uint8_t prefix[6];
+    if (!read) return 0;
+    ascii = read + (id == 4U ? RC_READ_OFF_DEVICE_ACTIVE_TIME : RC_READ_OFF_DEVICE_INACTIVE_TIME);
+    return remote_ascii_date6(ascii, out) == 1 &&
+           rc_ascii_digits_to_bcd(ascii, 12U, prefix, 6U) == 0 && !memcmp(bad, prefix, 6U);
+}
+
+static uint8_t remote_tag01_width(uint8_t id)
+{
+    static const uint8_t widths[9] = {3,1,2,1,6,6,1,20,1};
+    return id < 9U ? widths[id] : 0U;
+}
+
+static int remote_tag01_status(const uint8_t *v, uint16_t n, uint8_t *status)
+{
+    uint16_t pos = 0U, seen = 0U;
+    uint8_t id, w;
+    *status = 0xFFU;
+    while (pos < n) {
+        id = v[pos++]; w = remote_tag01_width(id);
+        if (!w || w > n - pos || (seen & (1U << id))) return -1;
+        seen |= (uint16_t)(1U << id);
+        if (id == 3U) { if (v[pos] > 2U) return -1; *status = v[pos]; }
+        pos = (uint16_t)(pos + w);
+    }
+    return 0;
+}
+
+static int remote_validate_tlv(const uint8_t *plain, uint16_t n, uint8_t repair)
+{
+    uint16_t pos = 2U, len, end, k, declared;
+    uint8_t tag, id, w, status, fixed[6];
+    if (!plain || n < 5U || n > RC_UDP_AES_PLAIN_DATA_MAX) return -1;
+    declared = (uint16_t)(((uint16_t)plain[0] << 8) | plain[1]);
+    /* Existing STB implementations use both total-size conventions. */
+    if (declared != n && declared != n - 2U) return -1;
+    while (pos < n) {
+        if ((uint16_t)(n - pos) < 3U) return -1;
+        tag = plain[pos]; len = (uint16_t)(((uint16_t)plain[pos+1U] << 8) | plain[pos+2U]);
+        pos = (uint16_t)(pos + 3U);
+        if (len > n - pos) return -1;
+        end = (uint16_t)(pos + len);
+        if (tag == 1U) {
+            if (remote_tag01_status(plain + pos, len, &status) != 0) return -1;
+            for (k = pos; k < end; k = (uint16_t)(k + w)) {
+                id = plain[k++]; w = remote_tag01_width(id);
+                if (id == 4U || id == 5U) {
+                    if (status == 0xFFU) return -1;
+                    if (repair && remote_all_zero(plain+k,6U,0U)) continue;
+                    if (!remote_date6_valid(plain+k) && (!repair || !remote_recover_date(id,plain+k,fixed))) {
+                        co_printf("[RC   ] Tag01 invalid date id=%u\r\n", (unsigned)id);
+                        return -1;
+                    }
+                }
+            }
+        }
+        pos = end;
+    }
+    return 0;
+}
+
+/* Two passes: no mutation if any field/container is malformed. Work in the
+ * owned assembled buffer, keeping unrelated TLVs byte-identical; no new heap. */
+int remote_normalize_tlv_blob(uint8_t *plain, uint16_t *length)
+{
+    uint16_t n, rd = 2U, wr = 2U, len, next, k, out_start, declared;
+    uint8_t tag, status = 0xFFU, id, w, fixed[6], changes = 0U;
+    if (!length || remote_validate_tlv(plain, *length, 1U) != 0) return REMOTE_QUEUE_PARAM;
+    n = *length;
+    declared = (uint16_t)(((uint16_t)plain[0] << 8) | plain[1]);
+    while (rd < n) {
+        tag = plain[rd]; len = (uint16_t)(((uint16_t)plain[rd+1U] << 8) | plain[rd+2U]);
+        next = (uint16_t)(rd + 3U + len);
+        if (tag != 1U) { memmove(plain+wr,plain+rd,3U+len); wr = (uint16_t)(wr+3U+len); }
+        else {
+            (void)remote_tag01_status(plain+rd+3U,len,&status);
+            out_start = wr; wr = (uint16_t)(wr+3U);
+            for (k = (uint16_t)(rd+3U); k < next;) {
+                id = plain[k++]; w = remote_tag01_width(id);
+                if ((id == 4U || id == 5U) && remote_all_zero(plain+k,6U,0U)) {
+                    ++changes; k = (uint16_t)(k+w); continue;
+                }
+                plain[wr++] = id;
+                if ((id == 4U || id == 5U) && !remote_date6_valid(plain+k)) {
+                    (void)remote_recover_date(id,plain+k,fixed); memcpy(plain+wr,fixed,6U); ++changes;
+                } else memmove(plain+wr,plain+k,w);
+                wr = (uint16_t)(wr+w); k = (uint16_t)(k+w);
+            }
+            plain[out_start] = 1U; len = (uint16_t)(wr-out_start-3U);
+            plain[out_start+1U] = (uint8_t)(len>>8); plain[out_start+2U] = (uint8_t)len;
+        }
+        rd = next;
+    }
+    len = declared == n ? wr : (uint16_t)(wr-2U);
+    plain[0] = (uint8_t)(len>>8); plain[1] = (uint8_t)len; *length = wr;
+    if (changes) co_printf("[RC   ] Tag01 time normalized=%u\r\n", (unsigned)changes);
+    return REMOTE_QUEUE_OK;
+}
+
 /**
  * @brief  从 RC-READ 组装 Tag0x01 Value（与 BLE RC-READ 复用，见 PDF↔MD 字段映射）
  * @note   DataID0←DeviceRegionId(6B ASCII→3B BCD)；1←DeviceModel；
@@ -149,6 +287,7 @@ static int remote_build_tag01_value(uint8_t *value, uint16_t *value_len)
     uint8_t sw[2];
     uint8_t active[6];
     uint8_t inactive[6];
+    int active_present, inactive_present;
     uint8_t model;
     uint8_t status;
     uint8_t network;
@@ -170,16 +309,12 @@ static int remote_build_tag01_value(uint8_t *value, uint16_t *value_len)
     {
         return -1;
     }
-    if (rc_ascii_digits_to_bcd(rc_read + RC_READ_OFF_DEVICE_ACTIVE_TIME + 2u, 12u, active, 6u) != 0)
-    {
-        return -1;
-    }
-    if (rc_ascii_digits_to_bcd(rc_read + RC_READ_OFF_DEVICE_INACTIVE_TIME + 2u, 12u, inactive, 6u) != 0)
-    {
-        return -1;
-    }
     model = rc_read[RC_READ_OFF_DEVICE_MODEL];
     status = rc_read[RC_READ_OFF_DEVICE_STATUS];
+    if (status > 2U) return -1;
+    active_present = remote_ascii_date6(rc_read + RC_READ_OFF_DEVICE_ACTIVE_TIME, active);
+    inactive_present = remote_ascii_date6(rc_read + RC_READ_OFF_DEVICE_INACTIVE_TIME, inactive);
+    if (active_present < 0 || inactive_present < 0) return -1;
     network = rc_read[RC_READ_OFF_DEVICE_TRANSMISSION_NETWORK];
 
     /*
@@ -194,7 +329,8 @@ static int remote_build_tag01_value(uint8_t *value, uint16_t *value_len)
     memcpy(iccid_field, iccid_raw, iccid_len);
     batt = bat_get_level_percent();
 
-    /* Value 固定 50B: 原 7 项 27B + DataID7+SIM 21B + DataID8+电量 2B */
+    /* User-confirmed: retain both configured dates regardless of status (50B).
+     * Unconfigured all-zero dates retain the prior omission policy. */
     if (remote_value_append(value, &len, 50u, 0x00u, region, 3u) != 0)
     {
         return -1;
@@ -211,11 +347,11 @@ static int remote_build_tag01_value(uint8_t *value, uint16_t *value_len)
     {
         return -1;
     }
-    if (remote_value_append(value, &len, 50u, 0x04u, active, 6u) != 0)
+    if (active_present && remote_value_append(value, &len, 50u, 0x04u, active, 6u) != 0)
     {
         return -1;
     }
-    if (remote_value_append(value, &len, 50u, 0x05u, inactive, 6u) != 0)
+    if (inactive_present && remote_value_append(value, &len, 50u, 0x05u, inactive, 6u) != 0)
     {
         return -1;
     }
@@ -228,10 +364,6 @@ static int remote_build_tag01_value(uint8_t *value, uint16_t *value_len)
         return -1;
     }
     if (remote_value_append(value, &len, 50u, 0x08u, &batt, 1u) != 0)
-    {
-        return -1;
-    }
-    if (len != 50u)
     {
         return -1;
     }
@@ -719,6 +851,7 @@ int remote_queue_tlv_blob(const uint8_t *plain, uint16_t plain_len,
     {
         return REMOTE_QUEUE_ERR;
     }
+    if (remote_validate_tlv(plain, plain_len, 0U) != 0) return REMOTE_QUEUE_PARAM;
     {
         int rc;
         uint8_t *frame = app_heap_alloc(CAT1_UDP_MAX_UDP_PDU);

@@ -13,6 +13,11 @@ with tempfile.TemporaryDirectory(prefix='vcr_ir_tests_') as temp:
     for name in app_headers:
         extra = 'void combo_key_process(uint32_t,const uint32_t[5]);\nbool combo_key_is_idle(void);\n' if name=='combo_key.h' else ''
         (tmp/name).write_text('#include "mock_app.h"\n'+extra)
+    # Test the actual OTA blink routine interleaved with actual key scanning.
+    ota=(root/'bleuart/cat1/cat1/OTA/udp_ota.c').read_text(encoding='utf-8')
+    start=ota.index('void udp_ota_download_led_poll(void)')
+    end=ota.index('uint8_t udp_ota_poll_watchdog',start)
+    (tmp/'actual_ota_led.h').write_text(ota[start:end],encoding='utf-8')
     for name in ['nec','raw_capture','receive','wave_store','tx','keys','combo','matrix','driver','rc6_encode','rc6_driver']:
         exe=tmp/(name+'.exe')
         subprocess.run([args.cc,'-std=c99','-O2','-Wall','-Wextra','-Werror','-Wno-unused-function','-Wno-unused-variable','-Wno-misleading-indentation','-I'+str(tmp),'-I'+str(tests),'-I'+str(root/'bleuart/IR'),'-I'+str(root/'bleuart/src'),'-I'+str(root/'bleuart/inc'),'-I'+str(root/'bleuart/cat1/cat1/OTA'),str(tests/('test_'+name+'.c')),'-o',str(exe)],check=True)

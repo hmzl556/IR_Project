@@ -261,7 +261,7 @@ void rc_trans_note_upload_ok(uint32_t pack_index)
     s_have_last_ok = 1u;
 }
 
-const uint8_t *rc_trans_get_assembled(uint16_t *len)
+uint8_t *rc_trans_get_assembled(uint16_t *len)
 {
     if (!s_assembled_ready || len == NULL)
     {

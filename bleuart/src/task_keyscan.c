@@ -21,6 +21,14 @@
 #include "irc.h"            /* irc_send_repeat — 长按重复码       */
 #include "ir_learn.h"       /* 红外学习模式（长按电源键触发）     */
 
+/* OTA owns LED1 red for the whole session, including pause/retry.
+ * Preserve key handling; only suppress this module's ordinary LED writes. */
+static void task_keyscan_red_led(bool on)
+{
+    if (udp_ota_session_busy() != 0U) return;
+    if (on) SETLED1; else CLRLED1;
+}
+
 volatile uint16_t key_receive = 0;
 volatile uint32_t g_last_ble_ms = 0U;  /* BLE/CAT1 串行化：BLE 最后活动时间戳 */
 
@@ -81,7 +89,7 @@ void task_keyscan_ir_learn_result(ir_learn_evt_t evt, uint8_t user, uint8_t cmd)
     if (s_ir_learn_mode != IR_LEARN_MODE_CAPTURING) return;
     if (evt == IR_LEARN_EVT_TIMEOUT || evt == IR_LEARN_EVT_CANCELED) {
         s_ir_learn_mode = IR_LEARN_MODE_OFF;
-        CLRLED1;
+        task_keyscan_red_led(false);
         return;
     }
     if (evt == IR_LEARN_EVT_DONE && cat1_modem_is_busy()) {
@@ -98,7 +106,7 @@ void task_keyscan_ir_learn_result(ir_learn_evt_t evt, uint8_t user, uint8_t cmd)
     s_ir_learn_mode_ts_ms = app_now_ms();
     s_ir_learn_led_ts_ms = app_now_ms();
     s_ir_learn_led_on = true;
-    SETLED1;
+    task_keyscan_red_led(true);
     s_ir_learn_mode = IR_LEARN_MODE_FEEDBACK;
     co_printf("[IR] KEY%u %s\r\n", (unsigned)ir_learn_get_target(), ok ? "saved" : "failed");
 }
@@ -338,7 +346,7 @@ static void factory_reset_process(uint32_t now_ms, uint16_t key_id,
         case FACTORY_RST_CANCELLED:
             if ((now_ms - factory_rst_state_ts_ms) >= FACTORY_RST_LED_ON_MS)
             {
-                CLRLED1;
+                task_keyscan_red_led(false);
                 factory_rst_state = FACTORY_RST_IDLE;
                 co_printf("Factory reset: cancelled, returned to IDLE.\r\n");
             }
@@ -366,7 +374,7 @@ static void ir_learn_mode_process(uint32_t now_ms, uint16_t key_id, const uint32
     if (udp_ota_session_busy()) {
         s_ir_learn_mode = IR_LEARN_MODE_OFF;
         ir_learn_stop();
-        CLRLED1;
+        task_keyscan_red_led(false);
         return;
     }
     pm_activity_notify(PM_ACTIVITY_KEY);
@@ -379,13 +387,13 @@ static void ir_learn_mode_process(uint32_t now_ms, uint16_t key_id, const uint32
     if (now_ms - s_ir_learn_mode_ts_ms >= IR_LEARN_MODE_TIMEOUT_MS) {
         s_ir_learn_mode = IR_LEARN_MODE_OFF;
         ir_learn_stop();
-        CLRLED1;
+        task_keyscan_red_led(false);
         return;
     }
     if (s_ir_learn_mode == IR_LEARN_MODE_SAVING) {
         /* qflash masks interrupts. Do not erase/write across an active CAT1
          * UART transaction; keep scheduling BLE, UART and watchdog meanwhile. */
-        SETLED1;
+        task_keyscan_red_led(true);
         if (!cat1_modem_is_busy()) {
             s_ir_learn_mode = IR_LEARN_MODE_CAPTURING;
             task_keyscan_ir_learn_result(IR_LEARN_EVT_DONE, 0, 0);
@@ -397,10 +405,10 @@ static void ir_learn_mode_process(uint32_t now_ms, uint16_t key_id, const uint32
             s_ir_learn_led_ts_ms = now_ms;
             if (--s_ir_feedback_left == 0u) {
                 s_ir_learn_mode = IR_LEARN_MODE_WAIT_KEY;
-                SETLED1;
+                task_keyscan_red_led(true);
             } else {
                 s_ir_learn_led_on = !s_ir_learn_led_on;
-                if (s_ir_learn_led_on) SETLED1; else CLRLED1;
+                if (s_ir_learn_led_on) task_keyscan_red_led(true); else task_keyscan_red_led(false);
             }
         }
         return;
@@ -421,10 +429,10 @@ static void ir_learn_mode_process(uint32_t now_ms, uint16_t key_id, const uint32
         if (now_ms - s_ir_learn_led_ts_ms >= 200u) {
             s_ir_learn_led_ts_ms = now_ms;
             s_ir_learn_led_on = !s_ir_learn_led_on;
-            if (s_ir_learn_led_on) SETLED1; else CLRLED1;
+            if (s_ir_learn_led_on) task_keyscan_red_led(true); else task_keyscan_red_led(false);
         }
         ir_learn_process();
-    } else SETLED1;
+    } else task_keyscan_red_led(true);
 }
 
 /**
@@ -533,7 +541,7 @@ void task_keyscan_process(void)
         combo_key_process(now_ms, hw_snapshot);
         /* Release the ordinary/wake red LED at combo takeover. Special
          * indication starts on later iterations, so it is not overwritten. */
-        if (combo_was_idle && !combo_key_is_idle()) CLRLED1;
+        if (combo_was_idle && !combo_key_is_idle()) task_keyscan_red_led(false);
 	}
 	// 简单组合键空闲时，工厂复位才工作
 	if (combo_key_is_idle() && s_ir_learn_mode == IR_LEARN_MODE_OFF) {
@@ -573,12 +581,12 @@ void task_keyscan_process(void)
     if (s_ir_suppress_until_release) {
         if (hw_snapshot[0] != 0u || hw_snapshot[1] != 0u) return;
         s_ir_suppress_until_release = false;
-        CLRLED1; /* Cancelled/released combos must not leave wake red latched. */
+        task_keyscan_red_led(false); /* Cancelled/released combos must not leave wake red latched. */
         return;
     }
 	switch (key_state) {
 		case KEY_STATE_IDLE:
-            if (key_id == 0u && hw_snapshot[0] == 0u && hw_snapshot[1] == 0u) CLRLED1;
+            if (key_id == 0u && hw_snapshot[0] == 0u && hw_snapshot[1] == 0u) task_keyscan_red_led(false);
 			if (key_id != 0) {
 				key_candidate = key_id;
 				key_state_ts_ms = now_ms;
@@ -594,7 +602,7 @@ void task_keyscan_process(void)
 			}
 			if ((now_ms - key_state_ts_ms) >= KEY_DEBOUNCE_MS) {
                 if (!keyscan_is_key_pressed(hw_snapshot, (uint8_t)key_candidate)) {
-                    CLRLED1;
+                    task_keyscan_red_led(false);
                     key_state = KEY_STATE_IDLE;
                     break;
                 }
@@ -632,11 +640,11 @@ void task_keyscan_process(void)
 				// 按键 LED 指示：按下亮，松开灭
 				if (key_active == TASK_KEYSCAN_TV_POWER) {
                     CLRLED2;
-                    SETLED1;
+                    task_keyscan_red_led(true);
                 } else if (ble_gap_get_peer() != NULL) {
 					SETLED2;
 				} else {
-					SETLED1;
+					task_keyscan_red_led(true);
 				}
 
                 s_ir_key_routed = false;
@@ -667,7 +675,7 @@ void task_keyscan_process(void)
              * solid red indication after the 5-second learning threshold. */
             if (key_active == TASK_KEYSCAN_TV_POWER &&
                 now_ms - key_press_start_ms >= IR_TV_POWER_LED_MS) {
-                CLRLED1;
+                task_keyscan_red_led(false);
             }
 
 			/* Right TV power KEY1 long hold 5s learns; left STB power KEY18 remains normal. */
@@ -681,7 +689,7 @@ void task_keyscan_process(void)
                 task_keyscan_hid_send_release(key_active_is_consumer ? 1u : 0u);
 				s_ir_learn_mode_ts_ms = now_ms;
 				CLRLED2;
-				SETLED1;  /* LED 常亮 */
+				task_keyscan_red_led(true);  /* LED 常亮 */
 				co_printf("[IR] learn mode entered\r\n");
 				/* 模拟电源键释放，避免 STB 认为按键一直按住 */
 				task_keyscan_rc_notify(0x00u);
@@ -713,7 +721,7 @@ void task_keyscan_process(void)
 				key_state_ts_ms = now_ms;
 				key_state = KEY_STATE_DEBOUNCE;
 				CLRLED2;
-				CLRLED1;
+				task_keyscan_red_led(false);
 				break;
 			}
 
@@ -763,7 +771,7 @@ void task_keyscan_process(void)
 					task_keyscan_rc_notify(0x00u);
 				}
 				CLRLED2;	
-				CLRLED1;								// 清除 LED2（蓝） 状态为 OFF
+				task_keyscan_red_led(false);								// 清除 LED2（蓝） 状态为 OFF
 				key_state = KEY_STATE_IDLE;
 				key_active = 0;
 				key_active_usage = 0;

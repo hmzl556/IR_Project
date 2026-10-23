@@ -25,6 +25,7 @@ int main(void){
  memset(block,0,sizeof(block));AES_ECB_encrypt(&s_aes_ctx,block);assert(rc_udp_aes_decrypt_data_field(block,16,restored,560,&pn)<0);
  assert(rc_udp_aes_encrypt_data_field(plain,0,cipher,608,&cn)<0);
  assert(rc_udp_aes_encrypt_data_field(plain,560,cipher,575,&cn)<0);
+ plain[0]=2;plain[1]=0x30;plain[2]=0x22;plain[3]=2;plain[4]=0x2b; /* 560B container, opaque 555B value */
  remote_reports_init();assert(!remote_queue_tlv_blob(plain,560,42));
  assert(!remote_report_poll(frame,sizeof(frame),&fn,&rc,&pack)&&fn==597&&rc&&pack==42);
  assert(!rc_udp_aes_decrypt_data_field(frame+19,576,restored,sizeof(restored),&pn)&&pn==560&&!memcmp(plain,restored,560));

@@ -19,8 +19,8 @@
   "compared_files": 225,
   "old_key_mapping_preserved": true,
   "build": "0 errors, 2 pre-existing rc_key_input.c warnings",
-  "binary_bytes": 185260,
-  "sha256": "bd9a886d32a40de05943f1505eb4b0266b91fb3c48387f9db479603a55d70ee4",
+  "binary_bytes": 186612,
+  "sha256": "b90993ec135706fb90e09d468f977f00aa405be7bd337f4e071f6810e4ead9d3",
   "receiver": "PB5 active-low raw carrier; TIM3_CH2 falling edges, 1MHz timestamp extension; IRQ envelope/histogram only, task classification/retry; no blocking sampling loop",
   "host_test_groups": 25,
   "power_positions": {
@@ -34,7 +34,7 @@
   "stb_user_switch_combo": "Disabled: volume+ + home; all other combinations retained",
   "undefined_gehua_commands": "KEY2/3/17 have no default IR; KEY15 voice is BLE-only, not learnable; legacy voice learning ignored",
   "linker_region_ends": {
-    "ER_IROM1": "0x0102EA2C",
+    "ER_IROM1": "0x0102EF74",
     "RW_IRAM0": "0x20003FC0",
     "RW_IRAM1": "0x2000BAE0",
     "crash_record_start": "0x2000BBE0",
@@ -363,5 +363,158 @@
     "binary_sha256": "bd9a886d32a40de05943f1505eb4b0266b91fb3c48387f9db479603a55d70ee4",
     "hardware_tested": false,
     "limits": "AT idle is only a software proxy for a quieter load, not RF idle detection. First report may still be initial 100 if no safe sample window exists. 60s is a minimum update interval, not a forced wake schedule. Elapsed EMA approximates past minutes with newest sample; battery curve/ADC calibration need board measurements. No guarantee of identical readings on every reset."
+  },
+  "firmware_version": "02010000",
+  "ota_test_package_02020000_20261023": {
+    "firmware": "IR_Project_02020000.bin",
+    "from_version": "02010000",
+    "target_version": "02020000",
+    "ota_version_bcd": "0x0202",
+    "bytes": 185260,
+    "chunk_bytes": 512,
+    "packets": 362,
+    "last_chunk_bytes": 428,
+    "checksum16": "0xBF4E",
+    "checksum16_decimal": 48974,
+    "checksum_algorithm": "sum of actual image bytes modulo 65536; NOT CRC16, do not include padded tail",
+    "app1_load_address": "0x01004000",
+    "app2_download_address": "0x01036000",
+    "app2_inclusive_end": "0x010633AB",
+    "server_data": "106.53.179.53:8888",
+    "server_ota": "106.53.179.53:8889",
+    "sha256": "588ca981ac04ee87538bcfd79c8b28f65628f8860ddf08a1bcaa5149dd11c48f",
+    "validation": "Build 0 errors, 2 original warnings; 12 APP/OTA regression groups passed; only 2 version-literal bytes changed versus 02010000 image; vectors and image length checked",
+    "device_tested": false,
+    "folder": "artifacts/OTA_02020000_20261023",
+    "source_sha256": "b88648779d2a13a77788c5a55aa8b36c67fb30a4dfafb95c90e0a0fd74dd6475",
+    "previous_version_backup": "backups/ota_before_02020000_20261023.zip",
+    "previous_binary_differences": [
+      104075,
+      128307
+    ]
+  },
+  "battery_hardware_feedback_20261023": {
+    "reboot_levels": [
+      57,
+      57,
+      57,
+      56,
+      57
+    ],
+    "reboot_vbat_mv": [
+      3815,
+      3810,
+      3810,
+      3804,
+      3815
+    ],
+    "server_matches_disp": true,
+    "voice_during_cat1_upload": "user confirmed passed",
+    "sleep_wake_cache": "user confirmed passed",
+    "scope": "User-reported hardware results; not absolute voltage/SOC calibration"
+  },
+  "tag01_dates_fix_20261023": {
+    "source_sha256": {
+      "bleuart/cat1/cat1/remote_reports.c": "563f2ce40bca4476f1ec054802e7eaa4de644d2d944cb0a660459cbd145c569e",
+      "bleuart/cat1/cat1/remote_reports.h": "d8d2ea388b81f056f95731fe3ef1ca41a776fa99b4dcc582b7adb781f9498f92",
+      "bleuart/cat1/cat1/rc_cat1_bridge.c": "a9752aea0a3eaf9028d74ea1bfe19f2071887c07893c2d07ff1ea92f2a6d8b76",
+      "bleuart/cat1/cat1/rc_trans_assembly.c": "66d01672fea6dccc36e0b325b6c74423038506eae736bf10bc8069d7cf1b4b80",
+      "bleuart/cat1/cat1/rc_trans_assembly.h": "f65ddf5df3b1d8b36d97f2ab9d8b358da37b3106ccc3a26e8db45087dc548ef5",
+      "tools/tests/test_reports.c": "d612b602d75916184aab86d16c70a762b0012a03096ea529a458096dcb11dc0c",
+      "tools/tests/test_aes.c": "505527d5fa32cd8a963e12b6968a20fd7112af9ca675e819835e591ac8891f9c",
+      "tools/tests/captured_tag01_fixture.h": "c1c88d33c3b5a12837454377dc99ae3877f85ee2cc8335d4619592b4f7dc307a"
+    },
+    "backup": "backups/tag01_dates_before_fix_20261023.zip",
+    "root_cause": "Captured STB RC-TRANS PackIndex 0x1D contains DataID4=20 26 01 01 10 08 and DataID5=20 36 01 01 10 08: YYYYMMDDhhmm truncated to 6B instead of YYMMDDhhmmss. Original local builder was correct; relay had no semantic guard.",
+    "fix": "Normalize owned assembly before AES: recover only an invalid date matching same-field first 12 configured ASCII digits, using full RC-READ seconds; remove non-applicable/unconfigured dates, validate calendar/BCD/TLV bounds and duplicates atomically; reject unknown malformed data with PARAM_ERROR; queue also validates",
+    "memory": "No extra heap allocations or static RAM buffers. Existing owned assembly compacted in place after complete validation; unrelated TLVs unchanged. RC-READ remains 14 ASCII date bytes.",
+    "tests": "25 host groups passed. Captured 186B mixed-TLV layout replays as 179B with 7 unrelated TLVs preserved; nonzero seconds recovery, both length conventions, idempotence, invalid/leap dates, status 0/1/2, all-zero omission, atomic rejection and 560B AES round trip covered. 73 C units static analysis, 11 existing diagnostics. Build 0 errors, 2 original warnings.",
+    "firmware_version": "02010000",
+    "binary_sha256": "8e1a2d22bbec0f9044ddf17796727a279b83306db57992499bdee289a3ca860e",
+    "hardware_tested": false,
+    "limits": "Configured release/expiry dates unchanged, not inferred from current time. Historical server records not rewritten. Other valid-looking but semantically wrong dates cannot be identified safely. Old 02020000 OTA package predates this fix; must not use it to validate the fix."
+  },
+  "ota_datefix_package_20261023": {
+    "firmware": "IR_Project_02020000_datefix.bin",
+    "from_version": "02010000",
+    "target_version": "02020000",
+    "ota_version_bcd": "0x0202",
+    "contains": "Tag01 date normalization, state-conditional date fields, calendar/TLV validation and all previous battery/voice/IR changes",
+    "bytes": 186712,
+    "chunk_bytes": 512,
+    "packets": 365,
+    "last_chunk_bytes": 344,
+    "checksum16_hex": "0xD440",
+    "checksum16_decimal": 54336,
+    "checksum_algorithm": "16-bit sum of actual file bytes, no padded tail, not CRC16",
+    "app1_load_address": "0x01004000",
+    "app2_download_address": "0x01036000",
+    "app2_inclusive_end": "0x01063957",
+    "sha256": "d62886df9e3a1baea42a1b456f63a7a43c35ad65581735b982a38c196e05432d",
+    "validation": "12 APP/OTA groups re-run passed; version-only delta of 2 bytes relative to date-fixed 02010000, which passed all 25 host groups and 73-unit static analysis; build 0 errors, 2 original warnings",
+    "hardware_ota_tested": false,
+    "folder": "artifacts/OTA_02020000_datefix_20261023",
+    "previous_fixed_02010000_backup": "backups/tag01_fixed_02010000_before_ota_20261023.zip",
+    "source_version_header_sha256": "b88648779d2a13a77788c5a55aa8b36c67fb30a4dfafb95c90e0a0fd74dd6475"
+  },
+  "ota_hardware_feedback_20261023": {
+    "log_path": "C:\\Users\\hmzl556\\.codex\\attachments\\7207db34-a56c-4f58-8300-7f6c2d8e9356\\已粘贴的文本.txt",
+    "log_sha256": "37bcd7cec7be2f53e6ace9801e52ebbdbea03fa273c50dd3e5be380dc0fa9a07",
+    "start_version": "02010000",
+    "installed_version": "02020000",
+    "image_bytes": 185260,
+    "packets": 362,
+    "checksum16": "0xBF4E",
+    "consecutive_chunks_1_to_362": true,
+    "verify_ok": true,
+    "bootloader_copy_ok": true,
+    "new_app_started": true,
+    "new_app_tag01_uplink_and_reply": true,
+    "bond_recovered_and_encryption_ok": true,
+    "voice_subscriptions_and_capability_after_upgrade": true,
+    "voice_recognition_tested_in_this_log": false,
+    "ir_store_before_after": "A=1 B=1 selected=0106e000 seq=8 mask=0; no learned slots to verify content preservation",
+    "ota_busy_reject_count": 91,
+    "ota_retry_or_pause_lines": [],
+    "malloc_fail": 0,
+    "hardfault": 0,
+    "scope": "Normal-power OTA path passed for original 362-packet image. This is NOT the newer 365-packet date-fixed package; no date-fix hardware validation inferred. Deferred Bootloader failure/power-cut recovery remains untested."
+  },
+  "retain_both_dates_user_confirmed_20261023": {
+    "approval": "User explicitly confirmed restoring both time fields, retaining date conversion/validation, no other functionality or version change.",
+    "files": [
+      "bleuart/cat1/cat1/remote_reports.c",
+      "tools/tests/test_reports.c"
+    ],
+    "source_sha256": {
+      "bleuart/cat1/cat1/remote_reports.c": "da71374c3c4d126eedf36ec011261ff62cb95af7c029be824b5a0a3cf850f3f4",
+      "tools/tests/test_reports.c": "16e1b87453f6234d6dec509d9b31d35caf3c1da7b4eb416ce96ba9050794346e"
+    },
+    "behavior": "Both configured date fields retained for terminal states 0/1/2, in local Tag01 and STB relay. Default Tag01 Value restored to 50B/9 fields. Known truncation repair and calendar/TLV checks preserved. Existing all-zero unconfigured-date policy unchanged.",
+    "tests": "25 host groups passed; status 0/1/2 preserve both fields, replay retains all 186 bytes including both corrected dates and unrelated tags. 73 C units static analysis, 11 existing raw diagnostics; build 0 errors, 2 original warnings.",
+    "firmware_version": "02010000",
+    "version_header_unchanged": true,
+    "binary_bytes": 186636,
+    "binary_sha256": "6dc3d8f8542f3353c1417784c8006fdbd9a522a679d928443df7ac6f9c13ba04",
+    "hardware_tested": false,
+    "backup": "backups/retain_both_dates_before_20261023.zip",
+    "ota_package_regenerated": false
+  },
+  "ota_led_ownership_20261023": {
+    "approval": "User confirmed OTA-only LED1 red ownership fix, without changing key behavior or other indicators.",
+    "source_sha256": {
+      "bleuart/src/task_keyscan.c": "52604e9dca369583841e51a111f6586a42886afa8adc54822264f22ac7fa943e",
+      "tools/tests/test_keys.c": "d444da1836de937f62b6b299f12ff4db9bf66a3cee8aa6be7c1a071319ffb1c4",
+      "tools/test_ir.py": "a03ac616b0d87b574a43ae727951f4c4b6bae70c1ab79d42abe023da25d75070"
+    },
+    "backup": "backups/ota_led_ownership_before_20261023.zip",
+    "change": "All task_keyscan LED1 red writes routed through a helper that does nothing during udp_ota_session_busy. Key handling text identical after reversing LED call substitutions. OTA blink constants/routine, blue LED and version header unchanged.",
+    "timing": "Existing 100ms toggle = nominal 100ms ON + 100ms OFF while downloading; software scheduling may delay ticks.",
+    "tests": "25 host groups passed; actual OTA blink routine interleaved with actual key scanner over 600 simulated 1ms iterations including idle/press/release, guard on/off and normal-mode restoration; 73 C units static analysis, 11 original diagnostics; build 0 errors, 2 original warnings.",
+    "firmware_version": "02010000",
+    "binary_bytes": 186612,
+    "binary_sha256": "b90993ec135706fb90e09d468f977f00aa405be7bd337f4e071f6810e4ead9d3",
+    "hardware_led_tested": false,
+    "limits": "No changes to post-reboot 3s completion indication or OTA key behavior; no new OTA package/version generated."
   }
 }

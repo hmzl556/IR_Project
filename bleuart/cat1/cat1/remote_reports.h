@@ -13,7 +13,11 @@
 /** 发送队列返回值（remote_queue_tlv_blob / remote_queue_tag10_key） */
 #define REMOTE_QUEUE_OK           0
 #define REMOTE_QUEUE_ERR         -1   /**< 参数/组帧错误 */
+#define REMOTE_QUEUE_PARAM       -3   /**< Malformed TLV/date; report PARAM_ERROR to STB */
 #define REMOTE_QUEUE_FULL        -2   /**< 队列满，设备忙 */
+
+/* Normalize known RC-READ date truncation in owned RC-TRANS data; update length. */
+int remote_normalize_tlv_blob(uint8_t *plain, uint16_t *length);
 
 /** 初始化远程报告 */
 void remote_reports_init(void);

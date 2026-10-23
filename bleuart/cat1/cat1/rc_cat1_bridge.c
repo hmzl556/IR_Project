@@ -646,7 +646,7 @@ static void rc_cat1_poll_downlink(void)
 
 static void rc_cat1_handle_pending_tlv(void)
 {
-	const uint8_t *tlv;
+	uint8_t *tlv;
 	uint16_t asm_len;
 	uint16_t pending_tlv_len = 0u;
 	uint32_t done_pack = RC_PACK_INDEX_NONE;
@@ -697,6 +697,12 @@ static void rc_cat1_handle_pending_tlv(void)
 		return;
 	}
 
+    if (remote_normalize_tlv_blob(tlv, &asm_len) != REMOTE_QUEUE_OK) {
+        co_printf("[RC   ] invalid STB TLV pack=0x%08X\r\n", (unsigned)done_pack);
+        rc_trans_release();
+        rc_cat1_on_udp_done(RC_RESULT_PARAM_ERROR, done_pack);
+        return;
+    }
 	cat1_skt_udp_set_recv_allow(0u);
 	queue_rc = remote_queue_tlv_blob(tlv, asm_len, done_pack);
 	cat1_skt_udp_set_recv_allow(1u);
@@ -708,7 +714,7 @@ static void rc_cat1_handle_pending_tlv(void)
 	} else if (queue_rc != REMOTE_QUEUE_OK) {
 		co_printf("[RC   ] UDP TLV queue fail pack=0x%08X rc=%d\r\n",
 		          (unsigned)done_pack, queue_rc);
-		rc_cat1_on_udp_done(RC_RESULT_NET_ERROR, done_pack);
+		rc_cat1_on_udp_done(queue_rc == REMOTE_QUEUE_PARAM ? RC_RESULT_PARAM_ERROR : RC_RESULT_NET_ERROR, done_pack);
 	}
 }
 

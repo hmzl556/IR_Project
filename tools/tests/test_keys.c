@@ -1,5 +1,11 @@
 #include "mock_app.h"
 #include "task_keyscan.c"
+#define OTA_DL_IDLE 0
+#define OTA_LED_BLINK_PERIOD_MS 100U
+static unsigned s_dl_phase=2,s_led_blink_active,s_dl_led_on;
+static uint32_t s_dl_led_last_ms;
+static uint32_t udp_ota_now_ms(void){return now_ms;}
+#include "actual_ota_led.h"
 void combo_key_process(uint32_t t,const uint32_t hw[5]){(void)t;(void)hw;}
 bool combo_key_is_idle(void){return combo_idle;}
 bool ir_learn_is_active(void){return learn_active;}
@@ -116,4 +122,19 @@ int main(void){unsigned i;
  s_ir_learn_mode=IR_LEARN_MODE_WAIT_KEY;s_ir_learn_mode_ts_ms=50040;led1=0;
  scan(50040,0,0);assert(led1==1);s_ir_learn_mode=IR_LEARN_MODE_OFF;
  scan(50050,0,0);assert(!led1);
- puts("keys: POWER learning, held-entry suppression, 18 keys, feedback/save failure, OTA cancel, debounce, voice release, reset failure, deferred HID order PASS");return 0;}
+ /* During OTA, no-key cleanup, press/release and learning cancellation must
+  * not shorten real OTA on/off phases. Re-run keyscan after every blink tick. */
+ ota_busy=1;led1=0;led2=1;s_dl_phase=2;s_dl_led_on=0;s_dl_led_last_ms=60000;
+ for(i=0;i<600;i++){
+  unsigned mask=(i>=250&&i<280)?(1u<<4):0;
+  unsigned expected=(i/100)%2;
+  scan(60000+i,mask,i==250?4:0);udp_ota_download_led_poll();
+  assert(led1==expected);
+  scan(60000+i,mask,0);assert(led1==expected);
+ }
+ /* Direct ordinary on/off requests are suppressed equally while OTA owns red. */
+ led1=0;led2=1;task_keyscan_red_led(true);assert(!led1&&led2==1);
+ led1=1;task_keyscan_red_led(false);assert(led1);
+ ota_busy=0;task_keyscan_red_led(false);assert(!led1);
+ task_keyscan_red_led(true);assert(led1);scan(60700,0,0);assert(!led1);
+ puts("keys: POWER learning, held-entry suppression, 18 keys, feedback/save failure, OTA cancel/100ms LED ownership, debounce, voice release, reset failure, deferred HID order PASS");return 0;}

@@ -440,5 +440,30 @@
   "latest_battery_sampling_revision_20261023": {
     "binary_sha256": "bd9a886d32a40de05943f1505eb4b0266b91fb3c48387f9db479603a55d70ee4",
     "note": "Supersedes historical build snapshots. See verification.json battery_sampling_revision_20261023. Firmware 02010000; real voltage calibration and repeated-reset validation remain to be performed."
+  },
+  "latest_ota_test_package_02020000_20261023": {
+    "binary_sha256": "588ca981ac04ee87538bcfd79c8b28f65628f8860ddf08a1bcaa5149dd11c48f",
+    "firmware_version": "02020000",
+    "note": "Only version literals changed; current package and deployment steps in artifacts/OTA_02020000_20261023. Actual OTA and deferred Bootloader recovery remain hardware work."
+  },
+  "latest_tag01_dates_fix_20261023": {
+    "firmware_version": "02010000",
+    "binary_sha256": "8e1a2d22bbec0f9044ddf17796727a279b83306db57992499bdee289a3ca860e",
+    "note": "Supersedes previous build snapshots. See verification.json tag01_dates_fix_20261023. Old OTA artifact remains historical and lacks this date fix."
+  },
+  "latest_ota_datefix_package_20261023": {
+    "firmware_version": "02020000",
+    "binary_sha256": "d62886df9e3a1baea42a1b456f63a7a43c35ad65581735b982a38c196e05432d",
+    "note": "Current date-fixed OTA artifact supersedes the earlier uncorrected 02020000 package; see verification.json ota_datefix_package_20261023."
+  },
+  "latest_retain_both_dates_user_confirmed_20261023": {
+    "firmware_version": "02010000",
+    "binary_sha256": "6dc3d8f8542f3353c1417784c8006fdbd9a522a679d928443df7ac6f9c13ba04",
+    "note": "User-confirmed reversal of status-based date omission; supersedes prior conditional-field behavior. Scope limited to report date retention and tests."
+  },
+  "latest_ota_led_ownership_20261023": {
+    "firmware_version": "02010000",
+    "binary_sha256": "b90993ec135706fb90e09d468f977f00aa405be7bd337f4e071f6810e4ead9d3",
+    "note": "User-approved LED-only ownership fix, supersedes previous build hash; no OTA package regenerated."
   }
 }

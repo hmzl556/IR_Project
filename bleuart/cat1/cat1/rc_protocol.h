@@ -53,7 +53,7 @@
 
 // RC-READ 默认字段值
 #define RC_READ_VAL_DEVICE_ID                      "RC"               //设备编码
-#define RC_READ_VAL_DEVICE_REGION_ID               "370100"           //行政区划码，符合 GB/T 2260 济南市
+#define RC_READ_VAL_DEVICE_REGION_ID               "110108"           //行政区划码，符合 GB/T 2260 北京海淀
 #define RC_READ_VAL_USER_ID                        "0001"             //用户编码
 #define RC_READ_VAL_DEVICE_MODEL                   0x01u              //0x01=语音遥控器, 0x02=4G 模块
 #define RC_READ_VAL_DEVICE_SW_VERSION              "02010000"         //软件版本，如 `01020304` 版本 v1.2.3.4
