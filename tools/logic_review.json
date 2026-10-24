@@ -465,5 +465,15 @@
     "firmware_version": "02010000",
     "binary_sha256": "b90993ec135706fb90e09d468f977f00aa405be7bd337f4e071f6810e4ead9d3",
     "note": "User-approved LED-only ownership fix, supersedes previous build hash; no OTA package regenerated."
+  },
+  "latest_cat1_baud_sync_20261023": {
+    "firmware_version": "02010000",
+    "binary_sha256": "c95281257bba113317b468c554a49bddac026d359e851f174951c7060f74fc80",
+    "note": "Optimized baud sync integrated without changing version; see verification.json cat1_baud_sync_20261023."
+  },
+  "latest_cat1_baud_fallback_only_20261023": {
+    "firmware_version": "02010000",
+    "binary_sha256": "a2a7e8532df86c225efb4d6c3605c7117831718c266915c3f48db17649880096",
+    "note": "Supersedes proactive105ms probing. Healthy115200 path uses originalCSCON directly; see verification.json cat1_baud_fallback_only_20261023."
   }
 }

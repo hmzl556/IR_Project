@@ -28,3 +28,5 @@ uint32_t USART1_CAT1_RxDropCount(void){return 0;}
 void usart1_at_send(char *s,unsigned n){(void)s;(void)n;}
 int usart1_at_send_pump(char *s,unsigned n,void (*fn)(void)){(void)s;(void)n;(void)fn;return 0;}
 int cat1_time_sync_from_cclk_rsp(const char *rsp){(void)rsp;return 0;}
+
+int USART1_CAT1_SetBaudrate(uint32_t baud){(void)baud;return 0;}
